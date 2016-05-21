@@ -1,5 +1,6 @@
+import java.sql.*;
 
-public class Customer {
+public class Customer extends Database {
 	private String id;
 	private String firstName;
 	private String lastName;
@@ -33,6 +34,7 @@ public class Customer {
 	public String getAddress() {
 		return address;
 	}
+
 	public void setAddress(String newAddress) {
 		this.address = newAddress;
 	}
@@ -58,4 +60,19 @@ public class Customer {
 		this.zip = newZip;
 	}
 	
+	public int save() {
+		
+		java.sql.PreparedStatement prepared;
+		//connect
+		String sql = "INSERT INTO `customers` "
+				+ "(`first_name`, `last_name`, `address`, `city`, `state`, `zip`) "
+				+ "VALUES (?, ?, ?, ?, ?, ?)";
+		try {
+			prepared = connection.prepareStatement(sql);
+			
+		} catch (SQLException e) {
+			return 0;
+		}
+		return 1;
+	}
 }
