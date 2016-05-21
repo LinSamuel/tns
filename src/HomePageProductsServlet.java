@@ -45,9 +45,9 @@ public class HomePageProductsServlet extends HttpServlet {
 //			prod1.setName("name");
 //			productList.add(prod1);
 			
-			request.setAttribute("productList", productList);
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/productlist.jsp");
-			dispatcher.forward(request, response);
+			request.setAttribute("productList2", productList);
+			//RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/productlist.jsp");
+			//dispatcher.forward(request, response);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
