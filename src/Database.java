@@ -4,16 +4,12 @@ import java.util.*;
 public class Database {
 	
 	public static Connection connection;
-	private static final String address = "localhost";
-	private static final String dbname = "tnsdb";
-	private static final String userName = "root";
-	private static final String passWord = "root";
 	
 	public static ResultSet queryHandler(Map<String, String> map) throws SQLException {
 		ResultSet returnMe = null;
 		try {
 		Class.forName("com.mysql.jdbc.Driver");
-		connection = DriverManager.getConnection("jdbc:mysql://" + address + "/" + dbname, userName, passWord);
+		connection = DriverManager.getConnection("jdbc:mysql://" + Config.address + "/" + Config.dbname, Config.userName, Config.passWord);
 		
 		Statement statement = null;
 		String sql = "SELECT * FROM products WHERE ";

@@ -4,3 +4,4 @@ build/*
 .settings/*
 /build/
 .DS_Store
+/src/Config.java
