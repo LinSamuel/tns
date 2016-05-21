@@ -58,9 +58,7 @@ public class Product {
 	}
 	
 	public void setImages(String[] newImages) {
-		for(int i = 0; i < newImages.length; i++) {
-			images[i] = newImages[i];
-		}
+		images = newImages;
 	}
 	
 	public String[] getImages() {
@@ -106,17 +104,4 @@ public class Product {
 	public String getCategory() {
 		return category;
 	}
-	
-	
-	// Incorporate mySQL driver
-	public static void queryDatabase() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException{
-	Class.forName("com.mysql.jdbc.Driver").newInstance();
-	// Connect to the test database
-	Connection connection = DriverManager.getConnection("jdbc:mysql:///tnsdb","mytestuser", "mypassword");
-	
-	
-	connection.close();
-}
-	
-	
 }
