@@ -12,7 +12,11 @@
 
 
 </header>
-test
+<form action="HomePageProductsServlet" method=get>
+				<br>
+			    <input type="submit" value="Submit">
+			    <input type="reset" value="Reset">
+</form>
 
 
 <footer>
