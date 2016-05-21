@@ -1,6 +1,4 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.util.ArrayList;
 
 
 public class Product {
@@ -9,7 +7,7 @@ public class Product {
 	private String name;
 	private String color;
 	private double price;
-	private String[] images;
+	private ArrayList<String> images = new ArrayList<String>();
 	private	String defaultImage;
 	private String slug;
 	private String details;
@@ -57,13 +55,15 @@ public class Product {
 		return price;
 	}
 	
-	public void setImages(String[] newImages) {
-		for(int i = 0; i < newImages.length; i++) {
-			images[i] = newImages[i];
-		}
+	public void setImages(ArrayList<String> newImages) {
+		images = newImages;
 	}
 	
-	public String[] getImages() {
+	public void addImage(String newImage) {
+		images.add(newImage);
+	}
+	
+	public ArrayList<String> getImages() {
 		return images;
 	}
 	
@@ -106,17 +106,4 @@ public class Product {
 	public String getCategory() {
 		return category;
 	}
-	
-	
-	// Incorporate mySQL driver
-	public static void queryDatabase() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException{
-	Class.forName("com.mysql.jdbc.Driver").newInstance();
-	// Connect to the test database
-	Connection connection = DriverManager.getConnection("jdbc:mysql:///tnsdb","mytestuser", "mypassword");
-	
-	
-	connection.close();
-}
-	
-	
 }
