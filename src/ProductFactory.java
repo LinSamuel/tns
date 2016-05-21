@@ -1,4 +1,5 @@
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -6,7 +7,7 @@ import java.util.HashMap;
 
 
 public class ProductFactory {
-	public static ArrayList<Product> getProduct(HashMap<String,String> searchAttributes){
+	public static ArrayList<Product> getProduct(HashMap<String,String> searchAttributes) throws SQLException{
 		ResultSet rs = Database.queryHandler(searchAttributes);
 		
 		HashMap<String,Product> productMap = new HashMap<String,Product>();
