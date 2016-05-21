@@ -15,7 +15,7 @@ public class Database {
 		String sql = "SELECT brand, p.color as color, price, default_image, p.id as id, p.name as name, " +
 			"p.details as details, p.slug as slug, p.gender as gender, p.category as category, " +
 			"i.url as url FROM products as p LEFT JOIN product_images as pi ON (pi.`product_id` = p.id) " +
-			"LEFT JOIN images as i ON (i.id = pi.image_id) ";
+			"LEFT JOIN images as i ON (i.id = pi.image_id) WHERE ";
 		statement = connection.prepareStatement(sql);
 		int i = 0;
 		for (Map.Entry<String,String> kv : map.entrySet())
