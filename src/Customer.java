@@ -1,78 +1,51 @@
 import java.sql.*;
+import java.util.HashMap;
 
 public class Customer extends Database {
-	private String id;
-	private String firstName;
-	private String lastName;
-	private String address;
-	private String city;
-	private String state;
-	private String zip;
-	
-	public String getId() {
-		return id;
-	}
-	public void setId(String newId) {
-		this.id = newId;
-	}
-	
-	public String getFirstName() {
-		return firstName;
-	}
-	public void setFirstName(String newFirstName) {
-		this.firstName = newFirstName;
-	}
-	
-	public String getLastName() {
-		return lastName;
-	}
 
-	public void setLastName(String newLastName) {
-		this.lastName = newLastName;
+	/**
+	 * constructor - builds attribute hash map
+	 * and initializes it to empty string
+	 */
+	public Customer() {
+		attributes.put("first_name", "");
+		attributes.put("last_name", "");
+		attributes.put("address", "");
+		attributes.put("city", "");
+		attributes.put("state", "");
+		attributes.put("zip", "");
 	}
 	
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String newAddress) {
-		this.address = newAddress;
-	}
-	
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String newCity) {
-		this.city = newCity;
-	}
-	
-	public String getState() {
-		return state;
-	}
-	public void setState(String newState) {
-		this.state = newState;
-	}
-	
-	public String getZip() {
-		return zip;
-	}
-	public void setZip(String newZip) {
-		this.zip = newZip;
-	}
-	
+	/**
+	 * save - public facing function that returns
+	 * the last inserted id and sets it to its own attribute
+	 * @return
+	 */
 	public int save() {
-		
-		java.sql.PreparedStatement prepared;
-		//connect
-		String sql = "INSERT INTO `customers` "
-				+ "(`first_name`, `last_name`, `address`, `city`, `state`, `zip`) "
-				+ "VALUES (?, ?, ?, ?, ?, ?)";
 		try {
-			prepared = connection.prepareStatement(sql);
+			java.sql.PreparedStatement prepared;
+			// connect
+			String sql = Utils.prepareStatement(attributes, table);
+			prepared = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			
+			prepared.setObject(1, attributes.get("first_name"));
+			prepared.setObject(2, attributes.get("last_name"));
+			prepared.setObject(3, attributes.get("address"));
+			prepared.setObject(4, attributes.get("first_name"));
+			prepared.setObject(5, attributes.get("city"));
+			prepared.setObject(6, attributes.get("zip"));
+			
+			int id = prepared.executeUpdate();
+			
+			if (id == 0) {
+				throw new SQLException("id failed");
+			}
 		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 			return 0;
 		}
-		return 1;
+		
+		setId(id);
+		return id;
 	}
 }
