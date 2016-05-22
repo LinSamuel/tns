@@ -11,23 +11,29 @@ public class Database {
 		Class.forName("com.mysql.jdbc.Driver");
 		connection = DriverManager.getConnection("jdbc:mysql://" + Config.address + "/" + Config.dbname, Config.userName, Config.passWord);
 		
-		Statement statement = null;
+		PreparedStatement statement = null;
 		String sql = "SELECT brand, p.color as color, price, default_image, p.id as id, p.name as name, " +
 			"p.details as details, p.slug as slug, p.gender as gender, p.category as category, " +
 			"i.url as url FROM products as p LEFT JOIN product_images as pi ON (pi.`product_id` = p.id) " +
 			"LEFT JOIN images as i ON (i.id = pi.image_id) ";
 		statement = connection.prepareStatement(sql);
-		int i = 0;
+		for (Map.Entry<String, String> kv : map.entrySet())
+		{
+			sql += kv.getKey() + " = ? AND ";
+		}
+		// strip out " AND "
+		sql = sql.substring(0, sql.length() - 5);
+		
+		statement = connection.prepareStatement(sql);
+		
+		int i = 1;
 		for (Map.Entry<String,String> kv : map.entrySet())
 		{
-			if (i++ == 0)
-				sql += kv.getKey() + "=\"" + kv.getValue() + "\"";
-			else
-				sql += " AND " + kv.getKey() + "=\"" + kv.getValue() + "\"";
+			statement.setString(i++, kv.getValue());
 		}
 		
-		System.out.println(sql);
-		returnMe = statement.executeQuery(sql);		
+		System.out.println(statement.toString());
+		returnMe = statement.executeQuery();		
 			
 		} catch(Exception e) {
 			e.printStackTrace();
