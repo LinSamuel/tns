@@ -101,10 +101,9 @@ public class Utils {
 	 * @param table {String}
 	 * @return {String}
 	 */
-	public static String prepareStatement(Map<String, String> attributes, String table) {
+	public static String prepareInsert(Map<String, String> attributes, String table) {
 		// get columns and values as an array list
 		List<String> columns = new ArrayList<String>(attributes.keySet());
-		List<String> values  = new ArrayList<String>(attributes.values());
 		
 		// build columns string
 		String column = "(" + Utils.implode(",", columns, "`") + ")";
@@ -116,5 +115,35 @@ public class Utils {
 		sql += column + " VALUES " + value;
 		
 		return sql;
+	}
+	
+	/**
+	 * prepareWhere - generates where statement
+	 * 
+	 * usage:
+	 *   // map = {"abc":"123", "efg":"456"}
+	 *   Utils.prepareWhere(map)
+	 *   // returns "`abc` = ? AND `efg` = ? "
+	 * @param map
+	 * @return
+	 */
+	public static String prepareWhere(Map<String, String> map) {
+		ArrayList<String> list = new ArrayList<String>();
+		
+		ArrayList<String> keys = new ArrayList<String>(map.keySet());
+		
+		for (String key : keys) {
+			list.add("`" + key + "` = ? ");
+		}
+		
+		return Utils.implode("AND", list);
+	}
+	
+	public static String prepareSelect(Map<String, String> attributes, String table) {
+		List<String> columns = new ArrayList<String>(attributes.keySet());
+		
+		String sql = "SELECT * FROM `" + table + "` WHERE ";
+		
+		return "a";
 	}
 }

@@ -11,7 +11,7 @@ public class Cart {
 	private double total;
 	private double tax;
 	private double taxRate = 0.08;
-
+	private double shipping = 0;
 	/**
 	 * add - adds an item to cart given id and qty
 	 * @param id {String}
@@ -81,6 +81,15 @@ public class Cart {
 	public int getTotalQty() {
 		return totalQty;
 	}
+	
+	public String getShipping() {
+		return parseDecimal(shipping);
+	}
+	
+	public HashMap<String, CartItem> getItems() {
+		return items;
+	}
+
 	private String parseDecimal(double number) {
 		DecimalFormat df = new DecimalFormat("#.00");
 		return df.format(number);

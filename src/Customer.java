@@ -16,36 +16,24 @@ public class Customer extends Database {
 		attributes.put("zip", "");
 	}
 	
-	/**
-	 * save - public facing function that returns
-	 * the last inserted id and sets it to its own attribute
-	 * @return
-	 */
-	public int save() {
-		try {
-			java.sql.PreparedStatement prepared;
-			// connect
-			String sql = Utils.prepareStatement(attributes, table);
-			prepared = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			
-			prepared.setObject(1, attributes.get("first_name"));
-			prepared.setObject(2, attributes.get("last_name"));
-			prepared.setObject(3, attributes.get("address"));
-			prepared.setObject(4, attributes.get("first_name"));
-			prepared.setObject(5, attributes.get("city"));
-			prepared.setObject(6, attributes.get("zip"));
-			
-			int id = prepared.executeUpdate();
-			
-			if (id == 0) {
-				throw new SQLException("id failed");
-			}
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-			return 0;
-		}
+	public static Customer factory(String ... params) {
+		Customer c = new Customer();
 		
-		setId(id);
-		return id;
+		
+		return c;
+	}
+	
+	public boolean exists() {
+		try {
+			PreparedStatement prepared;
+			String sql = "SELECT * FROM `customers` WHERE first_name = ? AND last_name = ?"
+					+ " AND address = ? AND city = ? AND state = ? AND zip = ?";
+			prepared = connection.prepareStatement(sql);
+			prepared.executeQuery();
+			
+		} catch (SQLException e) {
+			
+		}
+		return false;
 	}
 }

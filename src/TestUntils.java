@@ -48,8 +48,8 @@ public class TestUntils {
 	}
 	
 	@Test
-	public void prepareStatement() {
-		assertTrue( Utils.prepareStatement(testMap, "abc").equals(
+	public void prepareInsert() {
+		assertTrue( Utils.prepareInsert(testMap, "abc").equals(
 				"INSERT INTO `abc` SET (`a`,`b`,`c`) VALUES (?,?,?)"
 			)
 		);

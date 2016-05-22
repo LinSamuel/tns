@@ -17,7 +17,7 @@ public class Database {
 	 * attributes - HashMap that maps directly to columns in 
 	 * database table
 	 */
-	protected HashMap<String, String> attributes;
+	protected LinkedHashMap<String, String> attributes;
 	
 	public static ResultSet queryHandler(Map<String, String> map) throws SQLException {
 		ResultSet returnMe = null;	
@@ -68,16 +68,56 @@ public class Database {
 	public int getId() {
 		return id;
 	}
+	
+	/**
+	 * save - inserts current attributes into table
+	 * 
+	 * usage:
+	 *   Customer c = new Customer();
+	 *   c.set("first_name", "john");
+	 *   c.save();
+	 *   // returns prime key
+	 * 
+	 * @return {int}
+	 */
+	public int save() {
+		try {
+			String sqlStatement = Utils.prepareInsert(attributes, table);
+			PreparedStatement prepared = connection.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS);
+			
+			int i = 1;
+			for (String value : attributes.values()) {
+				prepared.setObject(i, value);
+				i++;
+			}
+			
+			int id = prepared.executeUpdate();
+		
+			if (id <= 0) {
+				throw new SQLException("Nope id's didnt return anything");
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			return 0;
+		}
+		
+		return setId(id);
+	}
+	
+	public boolean exists() {
+		
+		return true;
+	}
 
 	/**
 	 * set - setter (magic method) to set attribute hash map
 	 * the attribute hash-map maps directly to columns in database
 	 * 
 	 * Usage:
-	 *   Customer c = new Customer() // extends Database
-	 *   c.set("id", "123"); // note id is string
-	 * @param key
-	 * @param value
+	 *   Customer c = new Customer(); // extends Database
+	 *   c.set("first_name", "123");
+	 * @param key {String}
+	 * @param value {String}
 	 */
 	public void set(String key, String value) {
 		if (attributes.containsKey(key)) {
@@ -104,7 +144,8 @@ public class Database {
 	 * id's should be set apart from fillable attributes 
 	 * @param id {int}
 	 */
-	public void setId(int id) {
+	public int setId(int id) {
 		this.id = id;
+		return id;
 	}
 }
