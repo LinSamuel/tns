@@ -9,6 +9,7 @@
 <title>Thorne & Spindle Index</title>
 </head>
 <body>
+<<<<<<< HEAD
 <c:choose>
 	<c:when test="${empty viewHistory}">
 		<section>

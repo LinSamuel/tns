@@ -50,7 +50,6 @@ public class IndividualProductServlet extends HttpServlet {
 			dispatcher.include(request, response);
 			RequestDispatcher viewHistoryDispatcher = getServletContext().getRequestDispatcher("/VisitHistoryServlet");
 			viewHistoryDispatcher.include(request, response);
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
