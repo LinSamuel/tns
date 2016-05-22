@@ -6,6 +6,8 @@ public class Database {
 	public static Connection connection;
 	
 	public static ResultSet queryHandler(Map<String, String> map) throws SQLException {
+		if (map.isEmpty())
+			return null;
 		ResultSet returnMe = null;	
 		try {
 		Class.forName("com.mysql.jdbc.Driver");
