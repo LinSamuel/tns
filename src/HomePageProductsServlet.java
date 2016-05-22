@@ -33,21 +33,21 @@ public class HomePageProductsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
-		HashMap<String,String> homePageMap = new HashMap<String,String>();
-		homePageMap.put("name","The Davis Chinos");
-		homePageMap.put("color","Slate");
+		HashMap<String,String> homePageMapWomen = new HashMap<String,String>();
+		homePageMapWomen.put("p.id","17");
+		homePageMapWomen.put("name", "Laurel Tank");
+		homePageMapWomen.put("brand", "Madame Shoushou");
+		HashMap<String,String> homePageMapMen = new HashMap<String,String>();
+		homePageMapMen.put("p.id","3");
+		homePageMapMen.put("name", "Long-sleeve Henley");
+		homePageMapMen.put("color", "Indigo Large Check");
 		try {
-			ArrayList<Product> productList = ProductFactory.getProduct(homePageMap);
-//			ArrayList<Product> productList = new ArrayList<Product>();
-//			Product prod1 = new Product();
-//			prod1.setId("1");
-//			prod1.setBrand("brand");
-//			prod1.setName("name");
-//			productList.add(prod1);
+			ArrayList<Product> productListWomen = ProductFactory.getProduct(homePageMapWomen);
+			ArrayList<Product> productListMen = ProductFactory.getProduct(homePageMapMen);
 			
-			request.setAttribute("productList2", productList);
-			//RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/productlist.jsp");
-			//dispatcher.forward(request, response);
+			request.setAttribute("productListHomeWomen", productListWomen);
+			request.setAttribute("productListHomeMen", productListMen);
+
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
