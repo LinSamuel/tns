@@ -35,7 +35,7 @@ public class IndividualProductServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String productId = request.getParameter("productId");
+		String productId = request.getParameter("productID");
 		response.setContentType("text/html");
 		HashMap<String,String> productListingMap = new HashMap<String,String>();
 		productListingMap.put("p.id", productId);
