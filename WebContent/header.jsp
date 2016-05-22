@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" pageEncoding="ISO-8859-1"%>
     
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,11 +9,11 @@
 </head>
 	<header>
 		<div class="header">
-			<h1 class="header-logo-text"> <a href="/index.php"> T H O R N E & S P I N D L E </a> </h1>
+			<h1 class="header-logo-text"> <a href="/tns/"> T H O R N E & S P I N D L E </a> </h1>
 			<nav class = "navigationBar">
 				<ul class="headernav">
-					<li class="navItem"><a href="/index.php/women">Women</a></li>
-					<li class="navItem"><a href="/index.php/men">Men</a></li>
+					<li class="navItem"><a href="ProductListingServlet?gender=women">Women</a></li>
+					<li class="navItem"><a href="ProductListingServlet?gender=men">Men</a></li>
 					<li class="navItem"><a href="/index.php/about">About</a></li>
 					<li class="navItem"><a href="/index.php/contact">Contact</a></li>
 					<li class="navItem" id="cartimage">
