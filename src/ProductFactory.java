@@ -88,4 +88,44 @@ public class ProductFactory {
 		}
 		return finalProducts;
 	   }
+	
+	public static ArrayList<Product> getProductView(ArrayList<String> productIDList) throws SQLException{
+		ResultSet rs = null;
+		HashMap<String,Product> productMap = new HashMap<String,Product>();
+		for(int i = 0; i < productIDList.size(); i++){
+			HashMap<String,String> newHashMap = new HashMap<String,String>();
+			newHashMap.put("p.id",productIDList.get(i));
+			rs = Database.queryHandler(newHashMap);
+			while(rs.next()){
+				if(productMap.containsKey(rs.getString("id"))){
+					productMap.get(rs.getString("id")).addImage(rs.getString("url"));
+				} else{
+					Product newProduct = new Product();
+					newProduct.setId(rs.getString("id"));
+					newProduct.setBrand(rs.getString("brand"));
+					newProduct.setName(rs.getString("name"));
+					newProduct.setColor(rs.getString("color"));
+					newProduct.setPrice(rs.getDouble("price"));
+					newProduct.setDefaultImage(rs.getString("default_image"));
+					newProduct.setSlug(rs.getString("slug"));
+					newProduct.setDetails(rs.getString("details"));
+					newProduct.addImage(rs.getString("url"));
+					newProduct.setGender(rs.getString("gender"));
+					newProduct.setCategory(rs.getString("category"));
+					productMap.put(rs.getString("id"), newProduct);
+				}
+
+			}
+		}
+		ArrayList<Product> finalProducts = null;
+		try{
+			finalProducts = new ArrayList<Product>(productMap.values());
+		} catch(Exception e){
+			System.out.println("something went wrong");
+		}
+		
+		return finalProducts;
+
+	}
+	
 }
