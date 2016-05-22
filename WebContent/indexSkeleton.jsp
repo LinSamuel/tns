@@ -24,7 +24,7 @@
 	<h2>New Releases for Women</h2>
 	<c:forEach var="product" items="${productListHomeWomen}">
         <div class="third text-center">
-            <a href="/women/tops/hd-in-paris-laurel-tank"><img src="img/products/${product.defaultImage}" alt="productImage" width="150" height="auto"></a>
+            <a href="IndividualProductServlet?productID=${product.id}"><img src="img/products/${product.defaultImage}" alt="productImage" width="150" height="auto"></a>
                 <p>${product.name}</p>
                 <p>${product.brand}</p>
                 <p>${product.price}</p> 
@@ -50,7 +50,7 @@
 	<c:forEach var="product" items="${productListHomeMen}">      
 
         <div class="third text-center">
-            <a href="/women/tops/hd-in-paris-laurel-tank"><img src="img/products/${product.defaultImage}" alt="productImage" width="150" height="auto"></a>
+            <a href="IndividualProductServlet?productID=${product.id}"><img src="img/products/${product.defaultImage}" alt="productImage" width="150" height="auto"></a>
                 <p>${product.name}</p>
                 <p>${product.brand}</p>
                 <p>${product.price}</p> 

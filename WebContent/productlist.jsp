@@ -99,7 +99,7 @@
 <div id="productList">
 <c:forEach var="product" items="${productListing}">
 	<div class="main-page">
-	<a href = "BrowseServlet?productID=${product.id}"> <img class ="product-image" src="img/products${product.defaultImage}" alt=productImage width="150" height="auto"/></a>
+	<a href = "IndividualProductServlet?productID=${product.id}"> <img class ="product-image" src="img/products${product.defaultImage}" alt=productImage width="150" height="auto"/></a>
 	<p class="product-name">${product.name}</p>
 	<p class="product-brand">${product.brand}</p>
 	<p>${product.price}</p>

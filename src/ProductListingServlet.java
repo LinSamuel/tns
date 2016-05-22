@@ -66,7 +66,6 @@ public class ProductListingServlet extends HttpServlet {
 			productListing = ProductFactory.getProduct(productListingMap,isComplex);
 			request.setAttribute("productListing", productListing);
 			request.setAttribute("pageMode", pageMode);
-			System.out.println("page mode: "+ pageMode);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/productlist.jsp");
 			dispatcher.include(request, response);
 		} catch (SQLException e) {
