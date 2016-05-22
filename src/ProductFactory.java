@@ -30,25 +30,16 @@ public class ProductFactory {
 		Iterator iter = searchAttributes.entrySet().iterator();
 
 		while(iter.hasNext()){
-			//System.out.println("iterating...");
 			HashMap<String,String> innerMap = new HashMap<String,String>();
 			Map.Entry searchPair = (Map.Entry)iter.next();
 			innerMap.put((String)searchPair.getKey(), (String)searchPair.getValue());
-			//System.out.println((String)searchPair.getKey() + (String)searchPair.getValue());
 			rs = Database.queryHandler(innerMap);
 
 			while(rs.next()){
-				//System.out.println("adding new product..");
-				
-				//Product p = productMap.get(rs.getString("id"));
 				if(productMap.containsKey(rs.getString("id"))){
-					//System.out.println("in 1");
 					productMap.get(rs.getString("id")).addImage(rs.getString("url"));
-					//System.out.println(rs.getString("url"));
 				} else{
 					Product newProduct = new Product();
-					//System.out.println("in 2");
-					//System.out.println(rs.getString("default_image"));
 					newProduct.setId(rs.getString("id"));
 					newProduct.setBrand(rs.getString("brand"));
 					newProduct.setName(rs.getString("name"));
@@ -69,17 +60,10 @@ public class ProductFactory {
 		} else {
 			rs = Database.queryHandler(searchAttributes);
 			while(rs.next()){
-				//System.out.println("adding new product..");
-				
-				//Product p = productMap.get(rs.getString("id"));
 				if(productMap.containsKey(rs.getString("id"))){
-					//System.out.println("in 1");
 					productMap.get(rs.getString("id")).addImage(rs.getString("url"));
-					//System.out.println(rs.getString("url"));
 				} else{
 					Product newProduct = new Product();
-					//System.out.println("in 2");
-					//System.out.println(rs.getString("default_image"));
 					newProduct.setId(rs.getString("id"));
 					newProduct.setBrand(rs.getString("brand"));
 					newProduct.setName(rs.getString("name"));
@@ -99,13 +83,6 @@ public class ProductFactory {
 		ArrayList<Product> finalProducts = null;
 		try{
 			finalProducts = new ArrayList<Product>(productMap.values());
-			//System.out.println("new final");
-//		    Iterator it = productMap.entrySet().iterator();
-//		    while (it.hasNext()) {
-//		        Map.Entry pair = (Map.Entry)it.next();
-//		        finalProducts.add((Product) pair.getValue());
-//		        it.remove(); // avoids a ConcurrentModificationException
-//		    }
 		} catch(Exception e){
 			System.out.println("something went wrong");
 		}
