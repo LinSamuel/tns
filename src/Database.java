@@ -18,7 +18,7 @@ public class Database {
 			"p.details as details, p.slug as slug, p.gender as gender, p.category as category, " +
 			"i.url as url FROM products as p LEFT JOIN product_images as pi ON (pi.`product_id` = p.id) " +
 			"LEFT JOIN images as i ON (i.id = pi.image_id) ";
-		statement = connection.prepareStatement(sql);
+
 		for (Map.Entry<String, String> kv : map.entrySet())
 		{
 			sql += kv.getKey() + " = ? AND ";
