@@ -34,7 +34,6 @@ public class Database {
 			statement.setString(i++, kv.getValue());
 		}
 		
-		System.out.println(statement.toString());
 		returnMe = statement.executeQuery();		
 			
 		} catch(Exception e) {
