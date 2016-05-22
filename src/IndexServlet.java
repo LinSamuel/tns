@@ -28,6 +28,9 @@ public class IndexServlet extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * This servlet's doGet function is called to serve the purpose of displaying the products in the home page.
+	 * It gets the attributes from the HomePageProductsServlet, then redirects the information into the indexSkeleton.jsp
+	 * which will ultimately all get put together in index.jsp
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
@@ -36,7 +39,7 @@ public class IndexServlet extends HttpServlet {
 			dispatcher2.include(request, response);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/indexSkeleton.jsp");
 			
-			dispatcher.forward(request, response);
+			dispatcher.include(request, response);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

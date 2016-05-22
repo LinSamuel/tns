@@ -9,15 +9,6 @@
 <title>Thorne & Spindle Index</title>
 </head>
 <body>
-<header>
-			<%@ include file="header.jsp" %>
-</header>
-
-<form action="HomePageProductsServlet" method=get>
-				<br>
-			    <input type="submit" value="Submit">
-			    <input type="reset" value="Reset">
-</form>
 		<div class="content">
 			<img class="splash" src="img/pic.jpg" width="700" height="auto" align="middle"/>
 		</div>
@@ -71,10 +62,5 @@
 				
 	</c:otherwise>
 </c:choose>
-
-<footer>
-			<%@ include file="footer.jsp" %>
-
-</footer>
 </body>
 </html>

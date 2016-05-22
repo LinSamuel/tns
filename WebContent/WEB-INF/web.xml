@@ -17,6 +17,22 @@
     <servlet-name>HomePageProductsServlet</servlet-name>
     <url-pattern>/HomePageProductsServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ProductListingServlet</servlet-name>
+    <servlet-class>ProductListingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductListingServlet</servlet-name>
+    <url-pattern>/ProductListingServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>IndividualProductServlet</servlet-name>
+    <servlet-class>IndividualProductServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IndividualProductServlet</servlet-name>
+    <url-pattern>/IndividualProductServlet</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>

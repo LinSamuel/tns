@@ -30,6 +30,9 @@ public class HomePageProductsServlet extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * theGetFunction with the purpose for getting the information about products from the backend database (first part
+	 * for the first requirement in the assignment descriptions. It will set the attributes of the HTTPServletRequest
+	 * with ArrayLists of some of the women's and men's products that will be displayed in the front page
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
@@ -42,8 +45,8 @@ public class HomePageProductsServlet extends HttpServlet {
 		homePageMapMen.put("name", "Long-sleeve Henley");
 		homePageMapMen.put("color", "Indigo Large Check");
 		try {
-			ArrayList<Product> productListWomen = ProductFactory.getProduct(homePageMapWomen);
-			ArrayList<Product> productListMen = ProductFactory.getProduct(homePageMapMen);
+			ArrayList<Product> productListWomen = ProductFactory.getProduct(homePageMapWomen, false);
+			ArrayList<Product> productListMen = ProductFactory.getProduct(homePageMapMen, false);
 			
 			request.setAttribute("productListHomeWomen", productListWomen);
 			request.setAttribute("productListHomeMen", productListMen);

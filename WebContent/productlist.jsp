@@ -17,46 +17,96 @@
 
 		</header>		
 <c:choose>
-	<c:when test="${empty productList}">
+	<c:when test="${empty productListing}">
 		<section>
 			<h2>No Results Found</h2>
 		</section>
 	</c:when>
 	<c:otherwise>			
 <section>
-		
-<c:forEach var="product" items="${productList}">
-	<div class="row">
-		<div id="productDisplay">
-			<div class="big-image">
-				<img id="bigpic" src="img/products${product.defaultImage}" alt="productImage" width="auto" height="auto">
-			</div>
-			<div class="big-image-body">
-				<div>
-					<c:forEach var="imageUrl" items="${product.images}">
-						<img onclick="imageswap(this)" src="img/products/${imageUrl}" alt="productImage" width="15%" height="auto">
-					</c:forEach>
-	
-				</div>
-				<h3 class="product-name">${product.name}</h3>
-				<p> by <span class="product-brand">${product.brand}</span></p>
-				<br>
-				<p class="product-name">Price</p>
-				<p>${product.brand}</p>
-				<br>
-				<p class="product-name"> Color</p>
-				<p></p>
-				<p>${product.brand}</p>
-				<br>
-				<p class="product-name">Details</p>
-				<br>
-				<input id="product-qty" class="mailinglist-input" type="number" name="product-qty" value="1">
-				<button onclick="addItems(${product.id})">Add Items To Cart </button>
-			</div>
-		</div>
+<div class="row">
+<c:if test ="${pageMode == 'menGeneral'}">
+	<div class="sidebar">
+		<a href="ProductListingServlet?gender=men"> <h1 style="color: #5E9DC8">Men</h1> </a>
+	    <a href="ProductListingServlet?gender=men&category=tops">
+	        <h4>Tops</h4> </a>
+	    <a href="ProductListingServlet?gender=men&category=bottoms">
+	        <h4>Bottoms</h4> </a>
+	</div>
+</c:if>
+<c:if test ="${pageMode == 'womenGeneral'}">
+	<div class="sidebar">
+		<a href="ProductListingServlet?gender=women"> <h1 style="color: #5E9DC8">Women</h1> </a>
+		<a href="ProductListingServlet?gender=women&category=tops">
+			<h4>Tops</h4> </a>
+		<a href="ProductListingServlet?gender=women&category=bottoms">
+			<h4>Bottoms</h4> </a>
+		<a href="ProductListingServlet?gender=women&category=dresses">
+			<h4>Dresses</h4> </a>
+	</div>
+</c:if>
+<c:if test ="${pageMode == 'menBottoms'}">
+	<div class="sidebar">
+		<a href="ProductListingServlet?gender=men"> <h1>Men</h1> </a>
+		<a href="ProductListingServlet?gender=men&category=tops">
+		    <h4>Tops</h4> </a>
+		<a href="ProductListingServlet?gender=men&category=bottoms">
+		    <h4 style="color: #5E9DC8">Bottoms</h4> </a>
+	</div>
+</c:if>
+<c:if test ="${pageMode == 'menTops'}">
+	<div class="sidebar">
+		<a href="ProductListingServlet?gender=men"> <h1>Men</h1> </a>
+		<a href="ProductListingServlet?gender=men&category=tops">
+			<h4 style="color: #5E9DC8">Tops</h4> </a>
+		<a href="ProductListingServlet?gender=men&category=bottoms">
+			<h4>Bottoms</h4> </a>
+	</div>
+</c:if>
+<c:if test ="${pageMode == 'womenBottoms'}">
+	<div class="sidebar">
+		<a href="ProductListingServlet?gender=women"> <h1>Women</h1> </a>
+		<a href="ProductListingServlet?gender=women&category=tops">
+		    <h4>Tops</h4> </a>
+		<a href="ProductListingServlet?gender=women&category=bottoms">
+		    <h4 style="color: #5E9DC8">Bottoms</h4> </a>
+		<a href="ProductListingServlet?gender=women&category=dresses">
+		    <h4>Dresses</h4> </a>
+	</div>
+</c:if>
+<c:if test ="${pageMode == 'womenDresses'}">
+	<div class="sidebar">
+		<a href="ProductListingServlet?gender=women"> <h1>Women</h1> </a>
+		<a href="ProductListingServlet?gender=women&category=tops">
+		    <h4>Tops</h4> </a>
+		<a href="ProductListingServlet?gender=women&category=bottoms">
+		    <h4>Bottoms</h4> </a>
+		<a href="ProductListingServlet?gender=women&category=dresses">
+		    <h4 style="color: #5E9DC8">Dresses</h4> </a>
+	</div>
+</c:if>
+<c:if test ="${pageMode == 'womenTops'}">
+	<div class="sidebar">
+		<a href="ProductListingServlet?gender=women"> <h1 >Women</h1> </a>
+		<a href="ProductListingServlet?gender=women&category=tops">
+		    <h4 style="color: #5E9DC8">Tops</h4> </a>
+		<a href="ProductListingServlet?gender=women&category=bottoms">
+		    <h4>Bottoms</h4> </a>
+		<a href="ProductListingServlet?gender=women&category=dresses">
+		    <h4>Dresses</h4> </a>
+	</div>
+</c:if>
+<div id="productList">
+<c:forEach var="product" items="${productListing}">
+	<div class="main-page">
+	<a href = "BrowseServlet?productID=${product.id}"> <img class ="product-image" src="img/products${product.defaultImage}" alt=productImage width="150" height="auto"/></a>
+	<p class="product-name">${product.name}</p>
+	<p class="product-brand">${product.brand}</p>
+	<p>${product.price}</p>
 	</div>
 </c:forEach>
-
+</div>
+</div>
 </section>
 				
 		
