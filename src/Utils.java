@@ -72,7 +72,11 @@ public class Utils {
 	 * @return {String}
 	 */
 	public static String prepareQuestionmarks(int size) {
-		
+
+		if (size <= 0) {
+			return "()";
+		}
+
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append("(");

@@ -7,3 +7,4 @@ build/*
 /src/Config.java
 .idea/
 tns.iml
+out/

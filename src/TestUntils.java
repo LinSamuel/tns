@@ -1,3 +1,4 @@
+
 import static org.junit.Assert.*;
 
 import org.junit.BeforeClass;
@@ -42,9 +43,9 @@ public class TestUntils {
 	
 	@Test
 	public void prepareQuestionmarks() {
-		assert( Utils.prepareQuestionmarks(5).equals("(?,?,?,?,?)") );
-		assert( Utils.prepareQuestionmarks(0).equals("()") );
-		assert( Utils.prepareQuestionmarks(1).equals("(?)") );
+		assertTrue( Utils.prepareQuestionmarks(5).equals("(?,?,?,?,?)") );
+		assertTrue( Utils.prepareQuestionmarks(0).equals("()") );
+		assertTrue( Utils.prepareQuestionmarks(1).equals("(?)") );
 	}
 	
 	@Test
