@@ -544,3 +544,12 @@ input#searchBar:focus {
 	margin: 0 auto;
 	width:500px;
 }
+
+#recently-viewed-list {
+	text-align: right;
+	border-style: solid;
+}
+#recently-viewed-product {
+	display: block;
+	list-style-type: none;
+}

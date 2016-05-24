@@ -9,26 +9,30 @@
 <title>Thorne & Spindle Index</title>
 </head>
 <body>
-	<div class="row">
-	<h2>Recently Viewed Products</h2>
 <c:choose>
 	<c:when test="${empty viewHistory}">
 		<section>
-			<h2>No Recently Viewed Products Can Be Displayed</h2>
+			<h2>No Recently Viewed Products</h2>
 		</section>
 	</c:when>
-<c:otherwise>			
+<c:otherwise>	
+	<div id="recently-viewed-list" class="row">
+	<h2>Recently Viewed</h2>
+	<ul>		
 	<section>
 
 	<c:forEach var="product" items="${viewHistory}">      
 
-        <div class="third text-center">
-            <a href="IndividualProductServlet?productID=${product.id}"><img src="img/products/${product.defaultImage}" alt="productImage" width="150" height="auto"></a>
+        <li id="recently-viewed-product">
+        	<div>
+            	<a href="IndividualProductServlet?productID=${product.id}"><img src="img/products/${product.defaultImage}" alt="productImage" width="150" height="auto"></a>
                 <p>${product.name}</p>
                 <p>${product.brand}</p>
                 <p>${product.price}</p> 
-        </div>          
+        	</div>
+        </li>          
 	</c:forEach>
+	</ul>
 	</div>
 	</section>
 	</c:otherwise>
