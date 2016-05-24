@@ -545,11 +545,37 @@ input#searchBar:focus {
 	width:500px;
 }
 
+#empty-recently-viewed {
+	border: 2px solid black;
+	padding: 3px 15px 15px 15px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 155px;
+	margin-top: 40px;
+	margin-right: 20px;
+	background-color: white;
+	text-align: center;
+}
 #recently-viewed-list {
-	text-align: right;
-	border-style: solid;
+	border: 2px solid black;
+	padding: 3px 15px 15px 15px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 155px;
+	margin-top: 40px;
+	margin-right: 20px;
+	background-color: white;
+	text-align: center;
+}
+#recently-viewed-list h2 {
+	font-size: 20px;
 }
 #recently-viewed-product {
 	display: block;
 	list-style-type: none;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 15px;
 }
