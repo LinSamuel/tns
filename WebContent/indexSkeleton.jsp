@@ -11,31 +11,33 @@
 <body>
 <c:choose>
 	<c:when test="${empty viewHistory}">
-		<section>
-			<h2>No Recently Viewed Products</h2>
-		</section>
+<!-- 	<div id="empty-recently-viewed" class="row"> -->
+<!-- 		<section> -->
+<!-- 			<h2>No Recently Viewed Products</h2> -->
+<!-- 		</section> -->
+<!-- 	</div> -->
 	</c:when>
 <c:otherwise>	
 	<div id="recently-viewed-list" class="row">
-	<h2>Recently Viewed</h2>
-	<ul>		
-	<section>
+		<h2>Recently Viewed</h2>
+		<ul>		
+		<section>
 
-	<c:forEach var="product" items="${viewHistory}">      
+		<c:forEach var="product" items="${viewHistory}">      
 
-        <li id="recently-viewed-product">
-        	<div>
-            	<a href="IndividualProductServlet?productID=${product.id}"><img src="img/products/${product.defaultImage}" alt="productImage" width="150" height="auto"></a>
-                <p>${product.name}</p>
-                <p>${product.brand}</p>
-                <p>${product.price}</p> 
-        	</div>
-        </li>          
-	</c:forEach>
-	</ul>
+        	<li id="recently-viewed-product">
+        		<div>
+            		<a href="IndividualProductServlet?productID=${product.id}"><img src="img/products/${product.defaultImage}" alt="productImage" width="125" height="auto"></a>
+                	<p>${product.name}</p>
+                	<p>${product.brand}</p>
+                	<p>${product.price}</p> 
+        		</div>
+        	</li>          
+		</c:forEach>
+		</section>
+		</ul>
 	</div>
-	</section>
-	</c:otherwise>
+</c:otherwise>
 </c:choose>
 		<div class="content">
 			<img class="splash" src="img/pic.jpg" width="700" height="auto" align="middle"/>
