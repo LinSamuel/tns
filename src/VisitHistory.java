@@ -14,6 +14,7 @@ public class VisitHistory {
 	
 	public void addVisitedProduct(String productID) {
 		if(visitHistory.size() >= 5){
+			System.out.println("deleting 1");
 			visitHistory.remove(0);
 		}
 		visitHistory.add(productID);

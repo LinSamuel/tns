@@ -26,7 +26,7 @@ public class Database {
 				sql += " AND " + kv.getKey() + "=\"" + kv.getValue() + "\"";
 		}
 		
-		System.out.println(sql);
+		//System.out.println(sql);
 		returnMe = statement.executeQuery(sql);		
 			
 		} catch(Exception e) {

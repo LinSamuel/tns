@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Individual Product Page</title>
+		<title>Product List</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script src="js/imageswap.js"></script>
 	</head>
