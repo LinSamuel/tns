@@ -16,6 +16,11 @@
 
 
 		</header>		
+		
+<!--  <div class = "row">
+<h2>Number of Users Currently Viewing: ${ViewNum }</h2>
+</div> -->	
+	
 <c:choose>
 	<c:when test="${empty productDetails}">
 		<section>
@@ -24,7 +29,6 @@
 	</c:when>
 	<c:otherwise>			
 <section>
-		
 <c:forEach var="product" items="${productDetails}">
 	<div class="row">
 		<div id="productDisplay">

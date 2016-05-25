@@ -43,10 +43,13 @@ public class IndividualProductServlet extends HttpServlet {
 		try {
 			productListing = ProductFactory.getProduct(productListingMap,false);
 			request.setAttribute("productDetails", productListing);
+			RequestDispatcher currentViewCountDispatcher = getServletContext().getRequestDispatcher("/CurrentViewNumServlet");
+			currentViewCountDispatcher.include(request, response);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/productdetails.jsp");
 			dispatcher.include(request, response);
 			RequestDispatcher viewHistoryDispatcher = getServletContext().getRequestDispatcher("/VisitHistoryServlet");
 			viewHistoryDispatcher.include(request, response);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

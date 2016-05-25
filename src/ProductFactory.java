@@ -3,6 +3,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 
@@ -91,7 +92,7 @@ public class ProductFactory {
 	
 	public static ArrayList<Product> getProductView(ArrayList<String> productIDList) throws SQLException{
 		ResultSet rs = null;
-		HashMap<String,Product> productMap = new HashMap<String,Product>();
+		LinkedHashMap<String,Product> productMap = new LinkedHashMap<String,Product>();
 		for(int i = 0; i < productIDList.size(); i++){
 			HashMap<String,String> newHashMap = new HashMap<String,String>();
 			newHashMap.put("p.id",productIDList.get(i));
