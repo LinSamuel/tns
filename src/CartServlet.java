@@ -2,6 +2,8 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,14 +39,19 @@ public class CartServlet extends HttpServlet {
 			session.setAttribute("cart", new Cart());
 		}
 		
-		Cart cart = (Cart)session.getAttribute("cart");
-		
+		Cart cart = (Cart)session.getAttribute("cart");		
+
 		request.setAttribute("cart", cart);
 		
-		// todo use template to print
+		// todo print out cart details
 		
 	}
 	
+	/**
+	 * todo move this to the template class
+	 * @param cart
+	 * @param out
+	 */
 	public void CartView(Cart cart, PrintWriter out) {
 		
 		// uh oh no cart items

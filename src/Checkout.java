@@ -1,4 +1,8 @@
-
+/**
+ * todo fix or delete
+ * 
+ *
+ */
 public class Checkout {
 
 	Customer customer;

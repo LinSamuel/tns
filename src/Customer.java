@@ -17,6 +17,11 @@ public class Customer extends Database {
 		attributes.put("zip", "");
 	}
 	
+	/**
+	 * todo remove?
+	 * @param params
+	 * @return
+	 */
 	public static Customer factory(String ... params) {
 		Customer c = new Customer();
 		
@@ -24,6 +29,12 @@ public class Customer extends Database {
 		return c;
 	}
 	
+	/**
+	 * factory - creates a customer based on request parameter
+	 *
+	 * @param request
+	 * @return
+	 */
 	public static Customer factory(HttpServletRequest request) {
 		Customer c = new Customer();
 		
@@ -36,6 +47,9 @@ public class Customer extends Database {
 		return c;
 	}
 	
+	/**
+	 * todo finish
+	 */
 	public boolean exists() {
 		try {
 			PreparedStatement prepared;

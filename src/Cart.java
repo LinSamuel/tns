@@ -3,9 +3,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Cart object
+ * 
+ * +adds to cart
+ * add(Product p, int qty);
+ * 
+ * +remove from cart
+ * remove(Product p); 
+ * remove(String key);
+ * 
+ * @author john
+ *
+ */
 public class Cart {
-
-	// todo change to Product
+	
 	private HashMap<String, CartItem> items;
 	private int totalQty = 0;
 	private float subtotal = 0;
@@ -13,34 +25,59 @@ public class Cart {
 	private double tax = 0;
 	private double taxRate = 0.08;
 	private double shipping = 0;
+	
+	public Cart() {
+		items = new HashMap<String, CartItem>();
+	}
+
 	/**
 	 * add - adds an item to cart given id and qty
+	 * 
+	 * usage:
+	 * // Product p = new Product(); 
+	 * Cart c = new Cart();
+	 * c.add(product, 1);
+	 * 
 	 * @param id {String}
 	 * @param qty {int} quantity
 	 */
 	public void add(Product product, int qty) {
-		CartItem item = items.get(product.getId());
-		if (item != null) {
-			item.qty += qty;
+		if (items.containsKey(product.getId())) {
+			items.get(product.getId()).qty += qty;
 		} else {
+			CartItem item = new CartItem();
 			item.product = product;
 			item.qty = qty;
 			items.put(product.getId(), item);
 		}
+		update();
 	}
 	
-	public CartItem remove(String id) {
-		return items.remove(id);
+	/**
+	 * remove - removes an item from the cart by String id
+	 * @param id {String}
+	 */
+	public void remove(String id) {
+		items.remove(id);
+		update();
 	}
 	
-	public CartItem remove(Product p) {
-		return items.remove(p.getId());
+	/**
+	 * remove - removes a item from the cart by Product object
+	 * @param p
+	 */
+	public void remove(Product p) {
+		items.remove(p.getId());
+		update();
 	}
 	
 	
 	/**
-	 * update
+	 * update - calculates total, subtotal, and tax based on cart items
 	 * 
+	 * usage:
+	 * Cart c = new Cart();
+	 * c.update(); 
 	 * updates totalQty, subtotal, tax, and total
 	 * for the current cart
 	 */
@@ -91,6 +128,11 @@ public class Cart {
 		return items;
 	}
 	
+	/**
+	 * getCartItems - returns items from cart as an ArrayList
+	 * 
+	 * @return {ArrayList<CartItem>}
+	 */
 	public ArrayList<CartItem> getCartItems() {
 		return new ArrayList<CartItem>(items.values());
 	}
