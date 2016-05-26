@@ -118,12 +118,7 @@ public class ProductFactory {
 
 			}
 		}
-		ArrayList<Product> finalProducts = null;
-		try{
-			finalProducts = new ArrayList<Product>(productMap.values());
-		} catch(Exception e){
-			System.out.println("something went wrong");
-		}
+		ArrayList<Product> finalProducts = new ArrayList<Product>(productMap.values());
 		
 		return finalProducts;
 
