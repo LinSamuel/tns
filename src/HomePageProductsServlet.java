@@ -50,10 +50,10 @@ public class HomePageProductsServlet extends HttpServlet {
 			
 			request.setAttribute("productListHomeWomen", productListWomen);
 			request.setAttribute("productListHomeMen", productListMen);
+			//request.setAttribute("test123", "hehe");
 
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

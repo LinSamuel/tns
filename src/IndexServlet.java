@@ -35,11 +35,14 @@ public class IndexServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		try {
-			RequestDispatcher dispatcher2 = getServletContext().getRequestDispatcher("/HomePageProductsServlet");
-			dispatcher2.include(request, response);
+			RequestDispatcher productPicsDispatcher = getServletContext().getRequestDispatcher("/HomePageProductsServlet");
+			productPicsDispatcher.include(request, response);
+			RequestDispatcher viewHistoryDispatcher = getServletContext().getRequestDispatcher("/VisitHistoryServlet");
+			viewHistoryDispatcher.include(request, response);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/indexSkeleton.jsp");
-			
 			dispatcher.include(request, response);
+			//String testString = (String)request.getAttribute("test123");
+			//System.out.println(">>" + testString);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

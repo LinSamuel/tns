@@ -33,6 +33,22 @@
     <servlet-name>IndividualProductServlet</servlet-name>
     <url-pattern>/IndividualProductServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>VisitHistoryServlet</servlet-name>
+    <servlet-class>VisitHistoryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VisitHistoryServlet</servlet-name>
+    <url-pattern>/VisitHistoryServlet</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>CurrentViewNumServlet</servlet-name>
+    <servlet-class>CurrentViewNumServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CurrentViewNumServlet</servlet-name>
+    <url-pattern>/CurrentViewNumServlet</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
