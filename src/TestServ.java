@@ -47,29 +47,31 @@ public class TestServ extends HttpServlet {
             recentlyViewedDispatcher.include(request, response);
             ArrayList<Product> history = (ArrayList<Product>)request.getAttribute("viewHistory");
             
-            System.out.println(history);
             // recently viewed
-            out.println("	<div class=\"row\">\n" + 
-            		"	<h2>Recently Viewed Products</h2>");
-            if(history.isEmpty())
+
+            if(!history.isEmpty())
             {
-            	out.println("<h2>No Recently Viewed Products Can Be Displayed</h2>");
-            }
-            else
-            {
+            	out.println("	<div id=\"recently-viewed-list\" class=\"row\">\n" + 
+            			"		<h2>Recently Viewed</h2>\n" + 
+            			"		<ul>");
+            	
             	for (Product item : history)
             	{
-    				out.println("        <div class=\"third text-center\">\n" + 
-    						"            <a href=\"IndividualProductServlet?productID=" + item.getId() + 
-    						"			 \"><img src=\"img/products/" + item.getDefaultImage() + "\" alt=\"productImage\" width=\"150\" height=\"auto\"></a>");
-    				out.println("                <p>" + item.getName() + "</p>\n" + 
-    						"                <p>" + item.getBrand() + "</p>\n" + 
-    						"                <p>" + item.getPrice() + "</p>");
-    				out.println("</div>");
+    				out.println("        	<li id=\"recently-viewed-product\">\n" + 
+    						"        		<div>\n" + 
+    						"            		<a href=\"IndividualProductServlet?productID=" + item.getId() + "\"><img src=\"img/products/" + item.getDefaultImage() + "\" alt=\"productImage\" width=\"auto\" height=\"160\"></a>\n" + 
+    						"                	<p>" + item.getName() + "</p>\n" + 
+    						"                	<p>" + item.getBrand() + "</p>\n" + 
+    						"                	<p>" + item.getPrice() + "</p> \n" + 
+    						"        		</div>\n" + 
+    						"        	</li>");
             	}
+            	
+            	out.println("		</ul>\n" + 
+            			"	</div>");
+            	
             }
             
-            out.println("</div>");
             // splash
             out.println("		<div class=\"content\">\n" + 
             		"			<img class=\"splash\" src=\"img/pic.jpg\" width=\"700\" height=\"auto\" align=\"middle\"/>\n" + 
