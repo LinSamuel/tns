@@ -107,6 +107,26 @@ time, mark, audio, video {
 		padding: 0px;
 		text-align: center;
 	}
+	
+/* 	#recently-viewed-list {
+		border: 2px solid black;
+		padding: 3px 15px 15px 15px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		background-color: white;
+		text-align: center;
+		overflow: scroll;
+		overflow-y: hidden;
+		width: 800px;
+	}
+	
+	#recently-viewed-product {
+		display: inline;
+		float: left;
+		list-style-type: none;
+		padding: 5px;
+		font-size: 15px;
+	} */
 }
 
 @media screen and (max-width: 768px) {
@@ -137,6 +157,23 @@ time, mark, audio, video {
 		text-align: center;
 		clear:both;
 	}
+	
+/* 	#recently-viewed-list {
+		border: 2px solid black;
+		padding: 3px 15px 15px 15px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		background-color: white;
+		text-align: center;
+	}
+	
+	#recently-viewed-product {
+		display: inline;
+		list-style-type: none;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		font-size: 15px;
+	} */
 }
 
 img.splash {
@@ -545,18 +582,6 @@ input#searchBar:focus {
 	width:500px;
 }
 
-#empty-recently-viewed {
-	border: 2px solid black;
-	padding: 3px 15px 15px 15px;
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 155px;
-	margin-top: 40px;
-	margin-right: 20px;
-	background-color: white;
-	text-align: center;
-}
 #recently-viewed-list {
 	border: 2px solid black;
 	padding: 3px 15px 15px 15px;
@@ -568,6 +593,7 @@ input#searchBar:focus {
 	margin-right: 20px;
 	background-color: white;
 	text-align: center;
+	z-index: 3;
 }
 #recently-viewed-list h2 {
 	font-size: 20px;
@@ -578,4 +604,45 @@ input#searchBar:focus {
 	padding-top: 5px;
 	padding-bottom: 5px;
 	font-size: 15px;
+} 
+
+@media screen and (max-width: 980px) {
+	#recently-viewed-list {
+		border: 2px solid black;
+		padding: 3px 15px 15px 15px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		background-color: white;
+		text-align: center;
+		overflow: scroll;
+		overflow-y: hidden;
+		width: auto;
+	}
+	
+	#recently-viewed-product {
+		display: inline-block;
+		float: left;
+		list-style-type: none;
+		padding: 5px;
+		font-size: 15px;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	#recently-viewed-list {
+		border: 2px solid black;
+		padding: 3px 15px 15px 15px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		background-color: white;
+		text-align: center;
+	}
+	
+	#recently-viewed-product {
+		display: inline;
+		list-style-type: none;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		font-size: 15px;
+	}
 }

@@ -27,7 +27,7 @@
 
         	<li id="recently-viewed-product">
         		<div>
-            		<a href="IndividualProductServlet?productID=${product.id}"><img src="img/products/${product.defaultImage}" alt="productImage" width="125" height="auto"></a>
+            		<a href="IndividualProductServlet?productID=${product.id}"><img src="img/products/${product.defaultImage}" alt="productImage" width="auto" height="160"></a>
                 	<p>${product.name}</p>
                 	<p>${product.brand}</p>
                 	<p>${product.price}</p> 
