@@ -37,19 +37,17 @@ public class VisitHistoryServlet extends HttpServlet {
             session.setAttribute("visitHistory", new VisitHistory());
         }
         VisitHistory viewHistory = (VisitHistory)session.getAttribute("visitHistory");
-        String productIDtoAdd = request.getParameter("productID");
-        if(productIDtoAdd != null){
-        	System.out.println(productIDtoAdd);
-            viewHistory.addVisitedProduct(productIDtoAdd);
+        //String productIDtoAdd = request.getParameter("productID");
+        Product productToAdd = (Product)request.getAttribute("theProduct");
+        if(productToAdd != null){
+        	//System.out.println(productIDtoAdd);
+            viewHistory.addVisitedProduct(productToAdd);
         }
         ArrayList<Product> viewProductHistory;
-		try {
-			viewProductHistory = ProductFactory.getProductView(viewHistory.getVisitHistory());
-	        request.setAttribute("viewHistory", viewProductHistory);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			//viewProductHistory = ProductFactory.getProductView(viewHistory.getVisitHistory());
+        
+        //This long line of code sets an attribute to the request called 'viewHistory', with a value of an arraylist of Product objects
+        request.setAttribute("viewHistory", new ArrayList<Product>(viewHistory.getVisitHistory().values()));
 
         
         
