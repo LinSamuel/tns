@@ -1,4 +1,5 @@
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -6,10 +7,10 @@ public class Cart {
 
 	// todo change to Product
 	private HashMap<String, CartItem> items;
-	private int totalQty;
-	private float subtotal;
-	private double total;
-	private double tax;
+	private int totalQty = 0;
+	private float subtotal = 0;
+	private double total = 0;
+	private double tax = 0;
 	private double taxRate = 0.08;
 	private double shipping = 0;
 	/**
@@ -17,27 +18,23 @@ public class Cart {
 	 * @param id {String}
 	 * @param qty {int} quantity
 	 */
-	public void add(String id, int qty) {
-		CartItem item = items.get(id);
+	public void add(Product product, int qty) {
+		CartItem item = items.get(product.getId());
 		if (item != null) {
 			item.qty += qty;
-			items.put(id, item);
 		} else {
-			
-			// todo query database and get item price;
-			double price = 13.99;
-			// price = product.find('id');
-			
-			item.id = id;
+			item.product = product;
 			item.qty = qty;
-			item.price = price;
-			
-			items.put(id, item);
+			items.put(product.getId(), item);
 		}
 	}
 	
 	public CartItem remove(String id) {
 		return items.remove(id);
+	}
+	
+	public CartItem remove(Product p) {
+		return items.remove(p.getId());
 	}
 	
 	
@@ -54,12 +51,16 @@ public class Cart {
 		for (Map.Entry<String, CartItem> entry: items.entrySet()) {
 			CartItem cartItem = entry.getValue();
 			totalQty += cartItem.qty;
-			subtotal += cartItem.qty * cartItem.price;
+			subtotal += cartItem.qty * cartItem.product.getPrice();
 		}
 		
 		tax = subtotal * taxRate;
 		total = subtotal + tax;
 		
+	}
+	
+	public boolean isEmpty() {
+		return totalQty == 0;
 	}
 	
 	public String getSubtotal() {
@@ -88,6 +89,10 @@ public class Cart {
 	
 	public HashMap<String, CartItem> getItems() {
 		return items;
+	}
+	
+	public ArrayList<CartItem> getCartItems() {
+		return new ArrayList<CartItem>(items.values());
 	}
 
 	private String parseDecimal(double number) {

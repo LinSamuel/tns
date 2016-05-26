@@ -1,5 +1,6 @@
 import java.sql.*;
-import java.util.HashMap;
+
+import javax.servlet.http.HttpServletRequest;
 
 public class Customer extends Database {
 
@@ -20,6 +21,18 @@ public class Customer extends Database {
 		Customer c = new Customer();
 		
 		
+		return c;
+	}
+	
+	public static Customer factory(HttpServletRequest request) {
+		Customer c = new Customer();
+		
+		c.set("first_name", request.getParameter("first_name"));
+		c.set("last_name", request.getParameter("last_name"));
+		c.set("address", request.getParameter("address"));
+		c.set("city", request.getParameter("city"));
+		c.set("state", request.getParameter("state"));
+		c.set("zip", request.getParameter("zip"));
 		return c;
 	}
 	
