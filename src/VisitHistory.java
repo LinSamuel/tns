@@ -1,23 +1,21 @@
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 
 public class VisitHistory {
-	private ArrayList<String> visitHistory = new ArrayList<String>();
+	private LinkedHashMap<String, Product> visitHistory = new LinkedHashMap<String,Product>(10, .8f, true);
+	
+	public void addVisitedProduct(Product productToAdd) {
+		visitHistory.put(productToAdd.getId(), productToAdd);
 
-	public ArrayList<String> getVisitHistory() {
-		return visitHistory;
-	}
-
-	public void setVisitHistory(ArrayList<String> visitHistory) {
-		this.visitHistory = visitHistory;
+		if(visitHistory.size() > 5){
+			System.out.println("deleting 1");
+			this.visitHistory.remove(this.visitHistory.entrySet().iterator().next().getKey());
+		}
 	}
 	
-	public void addVisitedProduct(String productID) {
-		if(visitHistory.size() >= 5){
-			System.out.println("deleting 1");
-			visitHistory.remove(0);
-		}
-		visitHistory.add(productID);
+	public LinkedHashMap<String,Product> getVisitHistory(){
+		return this.visitHistory;
 	}
 	
 }
