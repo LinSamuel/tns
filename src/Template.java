@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Template {
     public static void printHeader(PrintWriter out) {
-        
+        out.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n");
         out.println("<head>\n" +
 "	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
 "	<link rel=\"icon\" type=\"image/png\" sizes=\"96x96\" href=\"favicon-96x96.png\">\n" +
@@ -22,7 +22,7 @@ public class Template {
 "				<ul class=\"headernav\">\n" +
 "					<li class=\"navItem\"><a href=\"ProductListingServlet?gender=women\">Women</a></li>\n" +
 "					<li class=\"navItem\"><a href=\"ProductListingServlet?gender=men\">Men</a></li>\n" +
-"					<li class=\"navItem\"><a href=\"/index.php/about\">About</a></li>\n" +
+"					<li class=\"navItem\"><a href=\"about\">About</a></li>\n" +
 "					<li class=\"navItem\"><a href=\"/index.php/contact\">Contact</a></li>\n" +
 "					<li class=\"navItem\" id=\"cartimage\">\n" +
 "						<a class=\"cart-icon\" href=\"/index.php/cart\">\n" +
