@@ -1,6 +1,7 @@
 
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,6 +26,14 @@ public class ProductListingServlet extends HttpServlet {
     public ProductListingServlet() {
         super();
         // TODO Auto-generated constructor stub
+    }
+    
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+        	Template.printHeader(out);
+        } 
     }
 
 	/**
@@ -68,6 +77,15 @@ public class ProductListingServlet extends HttpServlet {
 			request.setAttribute("pageMode", pageMode);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/productlist.jsp");
 			dispatcher.include(request, response);
+			
+			// new code here
+
+			
+			
+			
+			
+			
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
