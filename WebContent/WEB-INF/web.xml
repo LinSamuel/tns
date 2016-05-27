@@ -10,6 +10,14 @@
     <servlet-name>AboutServlet</servlet-name>
     <url-pattern>/about</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <servlet-name>ContactServlet</servlet-name>
+    <servlet-class>ContactServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ContactServlet</servlet-name>
+    <url-pattern>/contact</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>TestServ</servlet-name>
     <servlet-class>TestServ</servlet-class>

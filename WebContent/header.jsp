@@ -14,8 +14,8 @@
 				<ul class="headernav">
 					<li class="navItem"><a href="ProductListingServlet?gender=women">Women</a></li>
 					<li class="navItem"><a href="ProductListingServlet?gender=men">Men</a></li>
-					<li class="navItem"><a href="/index.php/about">About</a></li>
-					<li class="navItem"><a href="/index.php/contact">Contact</a></li>
+					<li class="navItem"><a href="about">About</a></li>
+					<li class="navItem"><a href="contact">Contact</a></li>
 					<li class="navItem" id="cartimage">
 						<a class="cart-icon" href="/index.php/cart">
 							<img src = "img/thecarticon.png" alt="cart icon" /><span id="cart-qty">
