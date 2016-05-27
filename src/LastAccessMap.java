@@ -28,9 +28,14 @@ public class LastAccessMap {
 	}
 	
 	/**
+	 * This method takes in the date (the time of the AJAX call) and compares that time with
+	 * the other times stored in the map. If the difference between the time is 10 seconds or less,
+	 * then the user is assumed to still be viewing the page, and a counter is incremented. If not, 
+	 * that entry is counted as null and the user with that session id is assumed to be not viewing
+	 * the page anymore
 	 * 
 	 * @param currentDate
-	 * @return
+	 * @return String
 	 */
 	public String checkTimes(Date currentDate){
 		String currentViewers = null;
