@@ -1,5 +1,4 @@
 
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -44,6 +43,7 @@ public class IndexServlet extends HttpServlet {
 			//dispatcher.include(request, response);
 			
 			PrintWriter out = response.getWriter();
+			Template.printHeader(out);
             out.println("<body>\n");
             ArrayList<Product> history = (ArrayList<Product>)request.getAttribute("viewHistory");
             
@@ -117,6 +117,7 @@ public class IndexServlet extends HttpServlet {
     		out.println("</div>");
     		
             out.println("</body");
+            Template.printFooter(out);
 			//String testString = (String)request.getAttribute("test123");
 			//System.out.println(">>" + "HELLO");
 			
