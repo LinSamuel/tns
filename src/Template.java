@@ -58,14 +58,14 @@ public class Template {
 "			<div class=\"row\">\n" +
 "				<div class=\"third\">\n" +
 "					<h3 class=\"footer-header\">Site Map</h3>\n" +
-"					<div><a href=\"/index.php/women\">Women</a></div>\n" +
-"					<div><a href=\"/index.php/men\">Men</a></div>\n" +
+"					<div><a href=\"ProductListingServlet?gender=women\">Women</a></div>\n" +
+"					<div><a href=\"ProductListingServlet?gender=men\">Men</a></div>\n" +
 "					<div><a href=\"/index.php/cart\">View Cart</a></div>\n" +
 "				</div>\n" +
 "				<div class=\"third\">\n" +
 "					<h3 class=\"footer-header\">Company Info</h3>\n" +
-"					<div><a href=\"/index.php/about\">About Us</a></div>\n" +
-"					<div><a href=\"/index.php/contact\">Contact Us</a></div>\n" +
+"					<div><a href=\"about\">About Us</a></div>\n" +
+"					<div><a href=\"contact\">Contact Us</a></div>\n" +
 "					<br>\n" +
 "					Join our mailing list!<br>\n" +
 "					<input class=\"mailinglist-input\" type=\"text\" name=\"do\" />\n" +
