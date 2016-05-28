@@ -39,8 +39,6 @@ public class IndexServlet extends HttpServlet {
 			productPicsDispatcher.include(request, response);
 			RequestDispatcher viewHistoryDispatcher = getServletContext().getRequestDispatcher("/VisitHistoryServlet");
 			viewHistoryDispatcher.include(request, response);
-			//RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/indexSkeleton.jsp");
-			//dispatcher.include(request, response);
 			
 			PrintWriter out = response.getWriter();
 			Template.printHeader(out);
@@ -118,8 +116,7 @@ public class IndexServlet extends HttpServlet {
     		
             out.println("</body");
             Template.printFooter(out);
-			//String testString = (String)request.getAttribute("test123");
-			//System.out.println(">>" + "HELLO");
+
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

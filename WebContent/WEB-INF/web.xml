@@ -74,10 +74,6 @@
     <servlet-name>CurrentViewNumServlet</servlet-name>
     <url-pattern>/CurrentViewNumServlet</url-pattern>
   </servlet-mapping>
-   <servlet>
-    <servlet-name>Product</servlet-name>
-    <servlet-class>Product</servlet-class>
-  </servlet>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>

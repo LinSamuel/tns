@@ -54,10 +54,7 @@ public class IndividualProductServlet extends HttpServlet {
 			productListing = ProductFactory.getProduct(productListingMap,false);
 			request.setAttribute("productDetails", productListing);
 			request.setAttribute("theProduct", productListing.get(0));
-			
-			/////
-			System.out.println("");
-			//
+
 			
 			if (productListing.isEmpty())
 				out.println("<h2>No Results Found</h2>");
@@ -103,7 +100,7 @@ public class IndividualProductServlet extends HttpServlet {
 			}
 			
 			Template.printFooter(out);
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

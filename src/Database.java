@@ -5,6 +5,20 @@ public class Database {
 	
 	public static Connection connection;
 	
+	/**
+	 * table - String that is the name of the table 
+	 * in the database. It is defaulted to products
+	 */
+	public String table = "products";
+	
+	protected int id;
+	
+	/**
+	 * attributes - HashMap that maps directly to columns in 
+	 * database table
+	 */
+	protected LinkedHashMap<String, String> attributes;
+	
 	public static ResultSet queryHandler(Map<String, String> map) throws SQLException {
 		ResultSet returnMe = null;	
 		try {
@@ -34,5 +48,104 @@ public class Database {
 		}
 		
 		return returnMe;
+	}
+
+	/**
+	 * get - getter (magic method) to get an attribute in the 
+	 * attribute HashMap. If attribute does not exists, returns null
+	 * 
+	 * Usage:
+	 *   // given Customer c; and c's id = "123"
+	 *   c.get("id"); // returns String "123"
+	 * 
+	 * @param key {String}
+	 * @return {String}
+	 */
+	public String get(String key) {
+		return attributes.get(key);
+	}
+
+	public int getId() {
+		return id;
+	}
+	
+	/**
+	 * save - inserts current attributes into table
+	 * 
+	 * usage:
+	 *   Customer c = new Customer();
+	 *   c.set("first_name", "john");
+	 *   c.save();
+	 *   // returns prime key
+	 * 
+	 * @return {int}
+	 */
+	public int save() {
+		try {
+			String sqlStatement = Utils.prepareInsert(attributes, table);
+			PreparedStatement prepared = connection.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS);
+			
+			int i = 1;
+			for (String value : attributes.values()) {
+				prepared.setObject(i, value);
+				i++;
+			}
+			
+			int id = prepared.executeUpdate();
+		
+			if (id <= 0) {
+				throw new SQLException("Nope id's didnt return anything");
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			return 0;
+		}
+		
+		return setId(id);
+	}
+	
+	public boolean exists() {
+		
+		return true;
+	}
+
+	/**
+	 * set - setter (magic method) to set attribute hash map
+	 * the attribute hash-map maps directly to columns in database
+	 * 
+	 * Usage:
+	 *   Customer c = new Customer(); // extends Database
+	 *   c.set("first_name", "123");
+	 * @param key {String}
+	 * @param value {String}
+	 */
+	public void set(String key, String value) {
+		if (attributes.containsKey(key)) {
+			attributes.put(key, value);
+		}
+	}
+
+	/**
+	 * setTable - sets the current table name
+	 * for inheritance
+	 * 
+	 * usage:
+	 *   Customer c = new Customer() // extends Database
+	 *   c.setTable("customer");
+	 * 
+	 * @param table {String}
+	 */
+	public void setTable(String table) {
+		this.table = table;
+	}
+
+	/**
+	 * setId
+	 * id's should be set apart from fillable attributes 
+	 * @param id {int}
+	 */
+	public int setId(int id) {
+		this.id = id;
+		return id;
 	}
 }
