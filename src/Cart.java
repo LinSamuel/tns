@@ -1,49 +1,83 @@
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Cart object
+ * 
+ * +adds to cart
+ * add(Product p, int qty);
+ * 
+ * +remove from cart
+ * remove(Product p); 
+ * remove(String key);
+ * 
+ * @author john
+ *
+ */
 public class Cart {
-
-	// todo change to Product
+	
 	private HashMap<String, CartItem> items;
-	private int totalQty;
-	private float subtotal;
-	private double total;
-	private double tax;
+	private int totalQty = 0;
+	private float subtotal = 0;
+	private double total = 0;
+	private double tax = 0;
 	private double taxRate = 0.08;
+	private double shipping = 0;
+	
+	public Cart() {
+		items = new HashMap<String, CartItem>();
+	}
 
 	/**
 	 * add - adds an item to cart given id and qty
+	 * 
+	 * usage:
+	 * // Product p = new Product(); 
+	 * Cart c = new Cart();
+	 * c.add(product, 1);
+	 * 
 	 * @param id {String}
 	 * @param qty {int} quantity
 	 */
-	public void add(String id, int qty) {
-		CartItem item = items.get(id);
-		if (item != null) {
-			item.qty += qty;
-			items.put(id, item);
+	public void add(Product product, int qty) {
+		if (items.containsKey(product.getId())) {
+			items.get(product.getId()).qty += qty;
 		} else {
-			
-			// todo query database and get item price;
-			double price = 13.99;
-			// price = product.find('id');
-			
-			item.id = id;
+			CartItem item = new CartItem();
+			item.product = product;
 			item.qty = qty;
-			item.price = price;
-			
-			items.put(id, item);
+			items.put(product.getId(), item);
 		}
+		update();
 	}
 	
-	public CartItem remove(String id) {
-		return items.remove(id);
+	/**
+	 * remove - removes an item from the cart by String id
+	 * @param id {String}
+	 */
+	public void remove(String id) {
+		items.remove(id);
+		update();
+	}
+	
+	/**
+	 * remove - removes a item from the cart by Product object
+	 * @param p
+	 */
+	public void remove(Product p) {
+		items.remove(p.getId());
+		update();
 	}
 	
 	
 	/**
-	 * update
+	 * update - calculates total, subtotal, and tax based on cart items
 	 * 
+	 * usage:
+	 * Cart c = new Cart();
+	 * c.update(); 
 	 * updates totalQty, subtotal, tax, and total
 	 * for the current cart
 	 */
@@ -54,12 +88,16 @@ public class Cart {
 		for (Map.Entry<String, CartItem> entry: items.entrySet()) {
 			CartItem cartItem = entry.getValue();
 			totalQty += cartItem.qty;
-			subtotal += cartItem.qty * cartItem.price;
+			subtotal += cartItem.qty * cartItem.product.getPrice();
 		}
 		
 		tax = subtotal * taxRate;
 		total = subtotal + tax;
 		
+	}
+	
+	public boolean isEmpty() {
+		return totalQty == 0;
 	}
 	
 	public String getSubtotal() {
@@ -81,6 +119,24 @@ public class Cart {
 	public int getTotalQty() {
 		return totalQty;
 	}
+	
+	public String getShipping() {
+		return parseDecimal(shipping);
+	}
+	
+	public HashMap<String, CartItem> getItems() {
+		return items;
+	}
+	
+	/**
+	 * getCartItems - returns items from cart as an ArrayList
+	 * 
+	 * @return {ArrayList<CartItem>}
+	 */
+	public ArrayList<CartItem> getCartItems() {
+		return new ArrayList<CartItem>(items.values());
+	}
+
 	private String parseDecimal(double number) {
 		DecimalFormat df = new DecimalFormat("#.00");
 		return df.format(number);

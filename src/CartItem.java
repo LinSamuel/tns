@@ -1,6 +1,5 @@
 
 public class CartItem {
-	public String id;
-	public int qty;
-	public double price;
+	public Product product;
+	public int qty;	
 }
