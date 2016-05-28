@@ -107,6 +107,26 @@ time, mark, audio, video {
 		padding: 0px;
 		text-align: center;
 	}
+	
+/* 	#recently-viewed-list {
+		border: 2px solid black;
+		padding: 3px 15px 15px 15px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		background-color: white;
+		text-align: center;
+		overflow: scroll;
+		overflow-y: hidden;
+		width: 800px;
+	}
+	
+	#recently-viewed-product {
+		display: inline;
+		float: left;
+		list-style-type: none;
+		padding: 5px;
+		font-size: 15px;
+	} */
 }
 
 @media screen and (max-width: 768px) {
@@ -137,6 +157,23 @@ time, mark, audio, video {
 		text-align: center;
 		clear:both;
 	}
+	
+/* 	#recently-viewed-list {
+		border: 2px solid black;
+		padding: 3px 15px 15px 15px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		background-color: white;
+		text-align: center;
+	}
+	
+	#recently-viewed-product {
+		display: inline;
+		list-style-type: none;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		font-size: 15px;
+	} */
 }
 
 img.splash {
@@ -543,4 +580,94 @@ input#searchBar:focus {
 .cart-info {
 	margin: 0 auto;
 	width:500px;
+}
+
+#recently-viewed-list {
+	border: 2px solid black;
+	padding: 3px 15px 15px 15px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 155px;
+	margin-top: 40px;
+	margin-right: 20px;
+	background-color: white;
+	text-align: center;
+	z-index: 3;
+}
+#recently-viewed-list h2 {
+	font-size: 20px;
+}
+#recently-viewed-product {
+	display: block;
+	list-style-type: none;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 15px;
+} 
+
+@media screen and (max-width: 980px) {
+	#recently-viewed-list {
+		border: 2px solid black;
+		padding: 3px 5px 5px 5px;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		background-color: white;
+		overflow-x: auto;
+		height: 305px;
+		width: 650px;
+		white-space: nowrap;
+		position: relative;
+	}
+	#recently-viewed-list ul {
+		margin: 0;
+		padding: 0;
+		white-space: nowrap;
+		width: 800px;
+		overflow-x: auto;
+		text-align: center;
+	}
+	
+	#recently-viewed-product {
+		display: inline-block;
+		float: left;
+		list-style-type: none;
+		padding-left: 20px;
+		padding-right: 20px;
+		font-size: 15px;
+		width: 120px;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	#recently-viewed-list {
+		border: 2px solid black;
+		padding: 3px 5px 5px 5px;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		background-color: white;
+		overflow-x: auto;
+		height: 305px;
+		width: 650px;
+		white-space: nowrap;
+		position: relative;
+	}
+	#recently-viewed-list ul {
+		margin: 0;
+		padding: 0;
+		white-space: nowrap;
+		width: 800px;
+		overflow-x: auto;
+		text-align: center;
+	}
+	
+	#recently-viewed-product {
+		display: inline-block;
+		float: left;
+		list-style-type: none;
+		padding-left: 20px;
+		padding-right: 20px;
+		font-size: 15px;
+		width: 120px;
+	}
 }
