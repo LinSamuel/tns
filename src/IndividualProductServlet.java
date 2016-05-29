@@ -56,6 +56,8 @@ public class IndividualProductServlet extends HttpServlet {
 			productListing = ProductFactory.getProduct(productListingMap,false);
 			request.setAttribute("productDetails", productListing);
 			request.setAttribute("theProduct", productListing.get(0));
+			RequestDispatcher viewHistoryDispatcher = getServletContext().getRequestDispatcher("/VisitHistoryServlet");
+			viewHistoryDispatcher.include(request, response);
 
 			
 			if (productListing.isEmpty())
