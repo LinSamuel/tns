@@ -45,14 +45,6 @@ public class CurrentViewNumServlet extends HttpServlet {
 		}
 		
 		Date currentDate = new Date();
-		System.out.println("date: "+ currentDate.toString());
-		
-		System.out.println("sessionID " + sessionID);
-		
-		//HashMap<String, HashMap<String,ArrayList<Date>>> lastAccessMap = new HashMap<String, HashMap<String,ArrayList<Date>>>();
-//		if (context.getAttribute("currentViewNum") == null) {
-//            context.setAttribute("currentViewNum", new CurrentViewNum());
-//        }
 		if (context.getAttribute("statusMap") == null) {
             context.setAttribute("statusMap", new HashMap<String, LastAccessMap>());
         }
@@ -67,31 +59,6 @@ public class CurrentViewNumServlet extends HttpServlet {
 		
 		statusMap.get(productID).addAccessTime(sessionID, currentDate);
 		statusMap.get(productID).checkTimes(currentDate);
-		
-		
-		
-		//Date[] dateArray = (Date[])lastAccessMap.values().toArray();
-		
-		//for(Map.Entry)
-		
-//		for(int i = 0; i < dateArray.length; i++){
-//			Date dateToTest = dateArray[i];
-//			int differenceValue = currentDate.compareTo(dateToTest);
-//			System.out.println("difference: " + String.valueOf(differenceValue));
-//		}
-		
-		//CurrentViewNum ViewNum = (CurrentViewNum)context.getAttribute("currentViewNum");
-
-        //ViewNum.increaseCount(productID);
-        //Integer currentCount = ViewNum.getCurrentCount(productID);
-        
-        //session.setMaxInactiveInterval(20*60);
-//        System.out.println("printing " + currentCount.toString());
-//        request.setAttribute("ViewNum", currentCount);
-        
-        //HttpSession session = request.getSession();
-		//session.setAttribute("user", e);
-		//session.setMaxInactiveInterval(30*60);
 		
 
 	}
