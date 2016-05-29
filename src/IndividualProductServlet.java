@@ -40,6 +40,7 @@ public class IndividualProductServlet extends HttpServlet {
 		HashMap<String,String> productListingMap = new HashMap<String,String>();
 		productListingMap.put("p.id", productId);
 		ArrayList<Product> productListing;
+		int TIME_INTERVAL = 10000;
 		try {
 			PrintWriter out = response.getWriter();
 			out.println("	<head>\n" + 
@@ -47,9 +48,10 @@ public class IndividualProductServlet extends HttpServlet {
 					"		<title>Individual Product Page</title>\n" + 
 					"		<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">\n" + 
 					"		<script src=\"js/imageswap.js\"></script>\n" + 
+					"		<script src=\"js/polling.js\"></script>\n" + 
 					"	</head>");
 			Template.printHeader(out);
-			out.println("<body>\n");
+			out.println("<body onload = \"poll( " + productId + ", " + String.valueOf(TIME_INTERVAL) + ")\">\n");
 			
 			productListing = ProductFactory.getProduct(productListingMap,false);
 			request.setAttribute("productDetails", productListing);

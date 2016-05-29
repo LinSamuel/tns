@@ -14,7 +14,7 @@
  * @param interval {int} milliseconds
  */
 function poll(id, interval) {
-	var url = "/CurrentViewNumServlet?productID=" + id;
+	var url = "CurrentViewNumServlet?productID=" + id;
 	var xhr = new XMLHttpRequest();
 	
 	window.setInterval(function() {

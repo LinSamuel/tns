@@ -74,6 +74,15 @@
     <servlet-name>CurrentViewNumServlet</servlet-name>
     <url-pattern>/CurrentViewNumServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>CartServlet</servlet-name>
+    <servlet-class>CartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CartServlet</servlet-name>
+    <url-pattern>/CartServlet</url-pattern>
+  </servlet-mapping>
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
