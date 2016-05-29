@@ -1,5 +1,6 @@
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 
@@ -39,18 +40,18 @@ public class LastAccessMap {
 	 */
 	public String checkTimes(Date currentDate){
 		String currentViewers = null;
-		int peopleCounter = 0;
-		for(Map.Entry<String,Date> entry: lastMap.entrySet()){
-			Date theLastAccess = entry.getValue();
-			int secondsDiff = (int) ((currentDate.getTime()-theLastAccess.getTime())/1000);
-			System.out.println(secondsDiff);
-			if (secondsDiff > 10){
-				lastMap.put(entry.getKey(), null);
-				continue;
-			}
-			peopleCounter++;			
-		}
-		System.out.println("current viewers: " + String.valueOf(peopleCounter));
+		
+	    Iterator it = this.lastMap.entrySet().iterator();
+	    while (it.hasNext()) {
+	        Map.Entry pair = (Map.Entry)it.next();
+	        Date theLastAccess = (Date)pair.getValue();
+	        int secondsDiff = (int) ((currentDate.getTime()-theLastAccess.getTime())/1000);
+	        if(secondsDiff>10){
+	        	it.remove();
+	        }
+	    }		
+		System.out.println("current viewerss: " + String.valueOf(this.lastMap.size()));
+		currentViewers = String.valueOf(this.lastMap.size());
 		return currentViewers;
 	}
 

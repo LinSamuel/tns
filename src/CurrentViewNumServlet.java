@@ -34,19 +34,11 @@ public class CurrentViewNumServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ServletContext context = getServletContext();
-		String sessionID = null;
-		Cookie[] cookies = request.getCookies();
-		if (cookies != null) {
-			for(Cookie cookie : cookies){
-			    if (cookie.getName().equals("JSESSIONID")) {
-			    	sessionID = cookie.getValue();
-			    }
-			}
-		}
+		String sessionID = request.getSession().getId();
 		
 		Date currentDate = new Date();
 		if (context.getAttribute("statusMap") == null) {
-            context.setAttribute("statusMap", new HashMap<String, LastAccessMap>());
+			context.setAttribute("statusMap", new HashMap<String, LastAccessMap>());
         }
         String productID = request.getParameter("productID");
 		HashMap<String, LastAccessMap> statusMap = (HashMap<String, LastAccessMap>)context.getAttribute("statusMap");
