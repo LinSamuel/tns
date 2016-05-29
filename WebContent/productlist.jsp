@@ -12,7 +12,7 @@
 	</head>
 	<body>
 		<header>
-			<%@ include file="header.jsp" %>
+			<!-- <%@ include file="header.jsp" %> -->
 
 
 		</header>		
@@ -115,7 +115,7 @@
 		
 
 <footer>
-			<%@ include file="footer.jsp" %>
+			<!-- <%@ include file="footer.jsp" %> -->
 
 </footer>
 	</body>
