@@ -32,13 +32,6 @@ public class Template {
 "						</a>\n" +
 "					</li>\n" +
 "				</ul>\n" +
-"				<form>\n" +
-"					<input type=\"text\" id=\"searchBar\" placeholder=\"Search products\" onFocus=\"this.placeholder=''\" onkeyup=\"getResults(this.value)\">\n" +
-"					<img src=\"img/searchicon.png\" alt=\"search icon\" />\n" +
-"					<div id = searchContainer>\n" +
-"						<div id=\"searchResults\"></div>\n" +
-"					</div>\n" +
-"				</form>\n" +
 "			</nav>\n" +
 "		</div>\n" +
 "	</header>");
