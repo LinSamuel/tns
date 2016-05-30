@@ -9,13 +9,10 @@
 </head>
 <body>
 
-<jsp:useBean id="checkout" class="tns.Cart" scope="session"> 
-   <jsp:setProperty name="checkout" property="test" value="Zara"/>
-</jsp:useBean>
+<jsp:useBean id="checkout" class="tns.Cart" scope="session"/>
 
 
-<p>Student First Name: <jsp:getProperty name="checkout" property="test"/>
-</p>
+<p>Cart subtotal: <jsp:getProperty name="checkout" property="subtotal"/></p>
 
 <jsp:useBean id="date" class="java.util.Date" /> 
 <p>The date/time is <%= date %>
