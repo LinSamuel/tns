@@ -90,23 +90,9 @@ public class IndividualProductServlet extends HttpServlet {
 				if(viewerStatus.get(productId) != null) {
 					int numCurrentViewers = viewerStatus.get(productId).getLastMap().size(); 
 					
-					switch (numCurrentViewers-1) {
-					case 0:
-						out.println("   <div id=\"current-num-viewers\" class=\"row\">\n" +
-								"       <h2>No other customers are currently viewing this product!</h2>\n" +
-								"   </div>\n");
-						break;
-					case 1:
-						out.println("   <div id=\"current-num-viewers\" class=\"row\">\n" +
-								"       <h2>" + (numCurrentViewers-1) + " other customer is currently viewing this product!</h2>\n" +
-								"   </div>\n");
-						break;
-					default:
-						out.println("   <div id=\"current-num-viewers\" class=\"row\">\n" +
-								"       <h2>" + (numCurrentViewers-1) + " other customers are currently viewing this product!</h2>\n" +
-								"   </div>\n");
-						break;
-					}
+					out.println("   <div id=\"current-num-viewers\" class=\"row\">\n" +
+							"       <h1>(" + numCurrentViewers + ") Current Viewers</h1>\n" +
+							"   </div>\n");
 				}
 			}
 
