@@ -3,9 +3,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -56,16 +58,67 @@ public class IndividualProductServlet extends HttpServlet {
 			productListing = ProductFactory.getProduct(productListingMap,false);
 			request.setAttribute("productDetails", productListing);
 			request.setAttribute("theProduct", productListing.get(0));
+			
 			RequestDispatcher viewHistoryDispatcher = getServletContext().getRequestDispatcher("/VisitHistoryServlet");
 			viewHistoryDispatcher.include(request, response);
+			ArrayList<Product> history = (ArrayList<Product>)request.getAttribute("viewHistory");
+			
+			ServletContext viewerContext = request.getServletContext();
+			HashMap<String, LastAccessMap> viewerStatus = (HashMap<String, LastAccessMap>)viewerContext.getAttribute("statusMap");
+            
+			// current number of viewers looking at the same product
+ 			if(!viewerStatus.isEmpty()) {
+ 				if(viewerStatus.get(productId) != null) {
+ 					int numCurrentViewers = viewerStatus.get(productId).getLastMap().size(); 
+ 					
+ 					switch (numCurrentViewers-1) {
+ 					case 0:
+ 						out.println("   <div id=\"current-num-viewers\" class=\"row\">\n" +
+ 	 	 						"       <h2>No other customers are currently viewing this product!</h2>\n" +
+ 	 	 						"   </div>\n");
+ 						break;
+ 					case 1:
+ 						out.println("   <div id=\"current-num-viewers\" class=\"row\">\n" +
+ 								"       <h2>" + (numCurrentViewers-1) + " other customer is currently viewing this product!</h2>\n" +
+ 								"   </div>\n");
+ 						break;
+ 					default:
+ 						out.println("   <div id=\"current-num-viewers\" class=\"row\">\n" +
+ 	 	 						"       <h2>" + (numCurrentViewers-1) + " other customers are currently viewing this product!</h2>\n" +
+ 	 	 						"   </div>\n");
+ 						break;
+ 					}
+ 				}
+ 			}
+			
+            // recently viewed
+
+            if(!history.isEmpty()) {
+            	out.println("	<div id=\"recently-viewed-list\" class=\"row\">\n" + 
+            			"		<h2>Recently Viewed</h2>\n" + 
+            			"		<ul>");
+            	
+            	for (Product item : history) {
+    				out.println("        	<li id=\"recently-viewed-product\">\n" + 
+    						"        		<div>\n" + 
+    						"            		<a href=\"IndividualProductServlet?productID=" + item.getId() + "\"><img src=\"img/products/" + item.getDefaultImage() + "\" alt=\"productImage\" width=\"auto\" height=\"160\"></a>\n" + 
+    						"                	<p>" + item.getName() + "</p>\n" + 
+    						"                	<p>" + item.getBrand() + "</p>\n" + 
+    						"                	<p>" + item.getPrice() + "</p> \n" + 
+    						"        		</div>\n" + 
+    						"        	</li>");
+            	}
+            	
+            	out.println("		</ul>\n" + 
+            			"	</div>");
+            	
+            }
 
 			
 			if (productListing.isEmpty())
 				out.println("<h2>No Results Found</h2>");
-			else
-			{
-				for (Product item : productListing)
-				{
+			else {
+				for (Product item : productListing) {
 					out.println("	<div class=\"row\">\n" + 
 							"		<div id=\"productDisplay\">\n" + 
 							"			<div class=\"big-image\">\n" + 
@@ -74,8 +127,7 @@ public class IndividualProductServlet extends HttpServlet {
 							"			<div class=\"big-image-body\">\n" + 
 							"				<div>");
 
-					for (String images : item.getImages())
-					{
+					for (String images : item.getImages()) {
 						out.println("						<img onclick=\"imageswap(this)\" src=\"img/products"
 								+ images + "\" alt=\"productImage\" width=\"15%\" height=\"auto\">");
 
