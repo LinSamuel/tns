@@ -55,6 +55,16 @@ public class Cart {
 		update();
 	}
 	
+	public void updateCartItem(Product product, int qty){
+		if((qty == 0) && (items.containsKey(product.getId()))){
+			remove(product);
+		}
+		if (items.containsKey(product.getId())) {
+			items.get(product.getId()).qty = qty;
+		}
+		update();
+	}
+	
 	/**
 	 * remove - removes an item from the cart by String id
 	 * @param id {String}
@@ -144,4 +154,3 @@ public class Cart {
 		return df.format(number);
 	}
 }
-

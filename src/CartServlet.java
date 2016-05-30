@@ -33,18 +33,27 @@ public class CartServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		// get cart from session
 		HttpSession session = request.getSession();
 		if (session.getAttribute("cart") == null) {
 			session.setAttribute("cart", new Cart());
 		}
 		
-		Cart cart = (Cart)session.getAttribute("cart");		
-
-		request.setAttribute("cart", cart);
+		Cart cart = (Cart)session.getAttribute("cart");	
 		
-		// todo print out cart details
+		PrintWriter out = response.getWriter();
+		
+		out.println("	<head>\n" + 
+				"		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n" + 
+				"		<title>Individual Product Page</title>\n" + 
+				"		<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">\n" + 
+				"		<script src=\"js/imageswap.js\"></script>\n" + 
+				"		<script src=\"js/polling.js\"></script>\n" + 
+				"		<script src=\"js/addToCart.js\"></script>\n" +
+				"	</head>");
+		Template.printHeader(out);
+		CartView(cart,out);
+		
+		Template.printFooter(out);
 		
 	}
 	
@@ -66,14 +75,16 @@ public class CartServlet extends HttpServlet {
 			out.println("<div class=\"row cart-container\" id=\"" + item.product.getId() + "\"");
 			out.println("<div class=\"cart-item\">");
 			out.println("<div class=\"cart-img-container\">");
-			out.println("<img src=\"/assets/images/products" + item.product.getDefaultImage() + "\" />");
+			out.println("<img src=\"img/products/" + item.product.getDefaultImage() + "\" />");
 			out.println("</div>");
 			out.println("<div class=\"cart-description\">");
 			out.println("<span class=\"product-attr product-name\">" + item.product.getName() + "</span>");
 			out.println("<span class=\"product-attr product-brand\">" + item.product.getBrand() + "</span>");
 			out.println("<span class=\"product-attr\">$ " + String.valueOf(item.product.getPrice()) +"</span>");
 			out.println("<span class=\"product-attr\">qty: " + item.qty + "</span>");
-			out.println("<button class=\"btn\" onclick=\"removeItems('" + item.product.getId() + "')\">remove</button>");
+			out.println("				<input id=\"product-qty\" class=\"mailinglist-input\" type=\"number\" name=\"product-qty\" value=\""+ String.valueOf(item.qty) + "\">\n"); 
+			out.println("				<button onclick=\"updateItems(" + item.product.getId() + ")\">Update Item Quantity </button>\n");
+			out.println("<button class=\"btn\" onclick=\"removeItems('" + item.product.getId() + "')\">Remove Product</button>");
 			out.println("</div></div></div>");
 		}
 		
