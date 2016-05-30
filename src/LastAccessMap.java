@@ -25,7 +25,7 @@ public class LastAccessMap {
 			lastMap.put(sessionID, null);
 		} 
 		lastMap.put(sessionID, theDate);
-		System.out.println("putting.. " + theDate.toString());
+		//System.out.println("putting.. " + theDate.toString());
 	}
 	
 	/**
@@ -50,7 +50,7 @@ public class LastAccessMap {
 	        	it.remove();
 	        }
 	    }		
-		System.out.println("current viewerss: " + String.valueOf(this.lastMap.size()));
+		//System.out.println("current viewerss: " + String.valueOf(this.lastMap.size()));
 		currentViewers = String.valueOf(this.lastMap.size());
 		return currentViewers;
 	}

@@ -81,8 +81,6 @@ public class IndexServlet extends HttpServlet {
             Template.printBody(out, "	<div class=\"row\">\n" + 
             		"	<h2>New Releases for Women</h2>");
             
-			RequestDispatcher homePageDispatcher = getServletContext().getRequestDispatcher("/HomePageProductsServlet");
-			homePageDispatcher.include(request, response);
 			ArrayList<Product> womenHomePageList = (ArrayList<Product>)request.getAttribute("productListHomeWomen");
 			ArrayList<Product> menHomePageList = (ArrayList<Product>)request.getAttribute("productListHomeMen");
                         
