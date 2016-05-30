@@ -1,3 +1,4 @@
+package tns;
 
 public class ProductOrders extends Database {
 	public ProductOrders() {

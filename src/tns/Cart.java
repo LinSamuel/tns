@@ -1,3 +1,5 @@
+package tns;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -142,3 +144,4 @@ public class Cart {
 		return df.format(number);
 	}
 }
+

@@ -1,3 +1,4 @@
+package tns;
 
 public class CartItem {
 	public Product product;
