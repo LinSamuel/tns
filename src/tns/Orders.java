@@ -43,9 +43,9 @@ public class Orders extends Database {
 		
 		ResultSet rs = query(id);
 		
-		double total;
-		double tax;
-		float subtotal;
+		double total = 0.0;
+		double tax = 0.0;
+		float subtotal = 0.0f;
 		int qty;
 		
 		try {
@@ -72,6 +72,11 @@ public class Orders extends Database {
 				cart.add(p, qty);
 				
 			}
+			
+			cart.setSubtotal(subtotal);
+			cart.setTotal(total);
+			cart.setTax(tax);
+			
 		} catch (SQLException e) {
 			// nope
 		}

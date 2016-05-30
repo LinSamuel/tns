@@ -128,17 +128,17 @@ public class Cart {
 		return parseDecimal(total);
 	}
 	
-//	public void setTax(double tax) {
-//		this.tax = tax;
-//	}
+	public void setTax(double tax) {
+		this.tax = tax;
+	}
 
 	public String getTax() {
 		return parseDecimal(tax);
 	}
 
-	public void setTaxRate(double taxRate) {
-		this.taxRate = taxRate;
-	}
+//	public void setTaxRate(double taxRate) {
+//		this.taxRate = taxRate;
+//	}
 
 	public String getTaxRate() {
 		return parseDecimal(taxRate);
