@@ -20,11 +20,21 @@ public class Database {
 	 */
 	protected LinkedHashMap<String, String> attributes;
 	
+	public static Connection setConnection() {
+		if (Database.connection == null) {
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				connection = DriverManager.getConnection("jdbc:mysql://" + Config.address + "/" + Config.dbname, Config.userName, Config.passWord);
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		
+		return connection;
+	}
 	public static ResultSet queryHandler(Map<String, String> map) throws SQLException {
 		ResultSet returnMe = null;	
 		try {
-		Class.forName("com.mysql.jdbc.Driver");
-		connection = DriverManager.getConnection("jdbc:mysql://" + Config.address + "/" + Config.dbname, Config.userName, Config.passWord);
 		
 		PreparedStatement pstatement = null;
 		String sql = "SELECT brand, p.color as color, price, default_image, p.id as id, p.name as name, "
@@ -44,7 +54,7 @@ public class Database {
 		}	
 		
 		System.out.println(sql);
-		returnMe = pstatement.executeQuery();		
+		returnMe = pstatement.executeQuery();
 			
 		} catch(Exception e) {
 			e.printStackTrace();

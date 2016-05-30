@@ -13,7 +13,7 @@
 
 
 <p>Cart subtotal: <jsp:getProperty name="checkout" property="subtotal"/></p>
-
+<h1><%= request.getParameter("orderID")%></h1>
 <jsp:useBean id="date" class="java.util.Date" /> 
 <p>The date/time is <%= date %>
 
