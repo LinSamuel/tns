@@ -49,7 +49,8 @@ public class IndividualProductServlet extends HttpServlet {
 					"		<title>Individual Product Page</title>\n" + 
 					"		<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">\n" + 
 					"		<script src=\"js/imageswap.js\"></script>\n" + 
-					"		<script src=\"js/polling.js\"></script>\n" + 
+					"		<script src=\"js/polling.js\"></script>\n" +
+					"		<script src=\"js/addToCart.js\"></script>\n" +
 					"	</head>");
 			Template.printHeader(out);
 			out.println("<body onload = \"poll( " + productId + ", " + String.valueOf(TIME_INTERVAL) + ")\">\n");
@@ -86,7 +87,7 @@ public class IndividualProductServlet extends HttpServlet {
 				}
 			
 			// current number of viewers looking at the same product
-			if(!viewerStatus.isEmpty()) {
+			if(viewerStatus != null && !viewerStatus.isEmpty()) {
 				if(viewerStatus.get(productId) != null) {
 					int numCurrentViewers = viewerStatus.get(productId).getLastMap().size(); 
 					
@@ -144,7 +145,7 @@ public class IndividualProductServlet extends HttpServlet {
 							"				<p>" + item.getDetails() + "</p>\n" + 
 							"				<br>\n" + 
 							"				<input id=\"product-qty\" class=\"mailinglist-input\" type=\"number\" name=\"product-qty\" value=\"1\">\n" + 
-							"				<button onclick=\"addItems(${product.id})\">Add Items To Cart </button>\n" + 
+							"				<button onclick=\"addItems(" + item.getId() + ")\">Add Items To Cart </button>\n" + 
 							"			</div>\n" + 
 							"		</div>\n" + 
 							"	</div>");

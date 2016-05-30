@@ -1,6 +1,5 @@
 
 function addItems(id) {
-
 	var value = document.getElementById('product-qty').value;
 
 	var xhr = new XMLHttpRequest();
@@ -13,7 +12,7 @@ function addItems(id) {
 		}
 	};
 
-	xhr.open('GET', '/index.php/addtocart/' + id + '/' + value, true);
+	xhr.open('GET', '/tns/CartLogicServlet?add=' + id + '&qty=' + value, true);
 	xhr.send();
 }
 
