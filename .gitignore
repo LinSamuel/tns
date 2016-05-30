@@ -5,6 +5,7 @@ build/*
 /build/
 .DS_Store
 /src/Config.java
+/src/tns/Config.java
 .idea/
 tns.iml
 out/
