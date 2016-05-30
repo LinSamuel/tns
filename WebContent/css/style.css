@@ -638,4 +638,5 @@ input#searchBar:focus {
 #current-num-viewers {
 	font-style: italic;
 	font-size: 12px;
+	color: #5E9DC8;
 }
