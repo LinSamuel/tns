@@ -1,4 +1,4 @@
-
+import tns.*;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -25,6 +25,7 @@ public class AddToCartServlet extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * This servlet adds items to the cart.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
  		// get cart from session
@@ -35,8 +36,14 @@ public class AddToCartServlet extends HttpServlet {
 		
 		Cart cart = (Cart)session.getAttribute("cart");
 		
-//		String productId = request.getParameter();
+		Product productToAdd = (Product)request.getAttribute("theProduct");
+		int qtyToAdd = (int)request.getAttribute("qty");
 		
+		if(productToAdd != null) {
+			cart.add(productToAdd, qtyToAdd);
+		}
+		
+		request.setAttribute("cartQty", cart.getTotalQty());
 		
 	}
 
