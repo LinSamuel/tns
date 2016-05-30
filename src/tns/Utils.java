@@ -66,7 +66,7 @@ public class Utils {
 	 * is worth a small amount of code dup.
 	 * 
 	 * usage:
-	 *   Utils.prepareQuestionmars(3);
+	 *   Utils.prepareQuestionmarks(3);
 	 *   // returns "(?,?,?)"
 	 * 
 	 * @param size {int}

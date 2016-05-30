@@ -26,7 +26,7 @@ public class Template {
 "					<li class=\"navItem\"><a href=\"about\">About</a></li>\n" +
 "					<li class=\"navItem\"><a href=\"contact\">Contact</a></li>\n" +
 "					<li class=\"navItem\" id=\"cartimage\">\n" +
-"						<a class=\"cart-icon\" href=\"/index.php/cart\">\n" +
+"						<a class=\"cart-icon\" href=\"cart\">\n" +
 "							<img src = \"img/thecarticon.png\" alt=\"cart icon\" /><span id=\"cart-qty\">\n" +
 "								()\n" +
 "							</span>\n" +

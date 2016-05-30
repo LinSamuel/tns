@@ -88,6 +88,7 @@ public class CartLogicServlet extends HttpServlet {
 				cart.updateCartItem(theProduct.get(0), quantity);
 			}
 		} 
+
 		
 	}
 
