@@ -107,26 +107,6 @@ time, mark, audio, video {
 		padding: 0px;
 		text-align: center;
 	}
-	
-/* 	#recently-viewed-list {
-		border: 2px solid black;
-		padding: 3px 15px 15px 15px;
-		margin-top: 10px;
-		margin-bottom: 10px;
-		background-color: white;
-		text-align: center;
-		overflow: scroll;
-		overflow-y: hidden;
-		width: 800px;
-	}
-	
-	#recently-viewed-product {
-		display: inline;
-		float: left;
-		list-style-type: none;
-		padding: 5px;
-		font-size: 15px;
-	} */
 }
 
 @media screen and (max-width: 768px) {
@@ -157,23 +137,6 @@ time, mark, audio, video {
 		text-align: center;
 		clear:both;
 	}
-	
-/* 	#recently-viewed-list {
-		border: 2px solid black;
-		padding: 3px 15px 15px 15px;
-		margin-top: 10px;
-		margin-bottom: 10px;
-		background-color: white;
-		text-align: center;
-	}
-	
-	#recently-viewed-product {
-		display: inline;
-		list-style-type: none;
-		padding-top: 5px;
-		padding-bottom: 5px;
-		font-size: 15px;
-	} */
 }
 
 img.splash {
@@ -670,4 +633,9 @@ input#searchBar:focus {
 		font-size: 15px;
 		width: 120px;
 	}
+}
+
+#current-num-viewers {
+	font-style: italic;
+	font-size: 12px;
 }
