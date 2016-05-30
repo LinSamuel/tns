@@ -1,3 +1,4 @@
+package tns;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class ProductFactory {
 	 * @return
 	 * @throws SQLException
 	 */
-	public static ArrayList<Product> getProduct(HashMap<String,String> searchAttributes, boolean complexQueries) throws SQLException{
+	public static ArrayList<tns.Product> getProduct(HashMap<String,String> searchAttributes, boolean complexQueries) throws SQLException{
 		ResultSet rs = null;
 		HashMap<String,Product> productMap = new HashMap<String,Product>();
 		
