@@ -37,7 +37,7 @@ public class AddToCartServlet extends HttpServlet {
 		Cart cart = (Cart)session.getAttribute("cart");
 		
 		Product productToAdd = (Product)request.getAttribute("theProduct");
-		int qtyToAdd = (int)request.getAttribute("qty");
+		int qtyToAdd = (int)request.getAttribute("totalQty");
 		
 		if(productToAdd != null) {
 			cart.add(productToAdd, qtyToAdd);
