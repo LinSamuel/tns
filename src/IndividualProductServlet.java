@@ -3,7 +3,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
@@ -65,6 +64,28 @@ public class IndividualProductServlet extends HttpServlet {
 			
 			ServletContext viewerContext = request.getServletContext();
 			HashMap<String, LastAccessMap> viewerStatus = (HashMap<String, LastAccessMap>)viewerContext.getAttribute("statusMap");
+			
+            // recently viewed
+            if(!history.isEmpty()) {
+            	out.println("	<div id=\"recently-viewed-list\" class=\"row\">\n" + 
+            			"		<h2>Recently Viewed</h2>\n" + 
+            			"		<ul>");
+            	
+            	for (Product item : history) {
+    				out.println("        	<li id=\"recently-viewed-product\">\n" + 
+    						"        		<div>\n" + 
+    						"            		<a href=\"IndividualProductServlet?productID=" + item.getId() + "\"><img src=\"img/products/" + item.getDefaultImage() + "\" alt=\"productImage\" width=\"auto\" height=\"160\"></a>\n" + 
+    						"                	<p>" + item.getName() + "</p>\n" + 
+    						"                	<p>" + item.getBrand() + "</p>\n" + 
+    						"                	<p>" + item.getPrice() + "</p> \n" + 
+    						"        		</div>\n" + 
+    						"        	</li>");
+            	}
+            	
+            	out.println("		</ul>\n" + 
+            			"	</div>");
+            	
+            }
             
 			// current number of viewers looking at the same product
  			if(!viewerStatus.isEmpty()) {
@@ -90,29 +111,6 @@ public class IndividualProductServlet extends HttpServlet {
  					}
  				}
  			}
-			
-            // recently viewed
-
-            if(!history.isEmpty()) {
-            	out.println("	<div id=\"recently-viewed-list\" class=\"row\">\n" + 
-            			"		<h2>Recently Viewed</h2>\n" + 
-            			"		<ul>");
-            	
-            	for (Product item : history) {
-    				out.println("        	<li id=\"recently-viewed-product\">\n" + 
-    						"        		<div>\n" + 
-    						"            		<a href=\"IndividualProductServlet?productID=" + item.getId() + "\"><img src=\"img/products/" + item.getDefaultImage() + "\" alt=\"productImage\" width=\"auto\" height=\"160\"></a>\n" + 
-    						"                	<p>" + item.getName() + "</p>\n" + 
-    						"                	<p>" + item.getBrand() + "</p>\n" + 
-    						"                	<p>" + item.getPrice() + "</p> \n" + 
-    						"        		</div>\n" + 
-    						"        	</li>");
-            	}
-            	
-            	out.println("		</ul>\n" + 
-            			"	</div>");
-            	
-            }
 
 			
 			if (productListing.isEmpty())
