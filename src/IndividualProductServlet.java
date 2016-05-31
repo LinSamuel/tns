@@ -120,7 +120,7 @@ public class IndividualProductServlet extends HttpServlet {
 							"				<p> by <span class=\"product-brand\">" + item.getBrand() + "</span></p>\n" + 
 							"				<br>\n" + 
 							"				<p class=\"product-name\">Price</p>\n" + 
-							"				<p>" + item.getName() + "</p>\n" + 
+							"				<p>" + item.getPrice() + "</p>\n" + 
 							"				<br>\n" + 
 							"				<p class=\"product-name\"> Color</p>\n" + 
 							"				<p></p>\n" + 
