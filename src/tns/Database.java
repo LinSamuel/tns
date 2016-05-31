@@ -43,7 +43,7 @@ public class Database {
 			i++;
 		}	
 		
-		//System.out.println(sql);
+		System.out.println(sql);
 		returnMe = pstatement.executeQuery();		
 			
 		} catch(Exception e) {

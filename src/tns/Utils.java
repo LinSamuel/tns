@@ -138,10 +138,10 @@ public class Utils {
 		ArrayList<String> keys = new ArrayList<String>(map.keySet());
 		
 		for (String key : keys) {
-			list.add("" + key + " = ? ");
+			list.add("" + key + " = ?");
 		}
 		
-		return Utils.implode("AND", list);
+		return Utils.implode(" AND ", list);
 	}
 	
 	public static String prepareSelect(Map<String, String> attributes, String table) {
