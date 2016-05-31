@@ -73,8 +73,7 @@ public class CartServlet extends HttpServlet {
 			out.println("<span class=\"product-attr product-name\">" + item.product.getName() + "</span>");
 			out.println("<span class=\"product-attr product-brand\">" + item.product.getBrand() + "</span>");
 			out.println("<span class=\"product-attr\">$ " + String.valueOf(item.product.getPrice()) +"</span>");
-			out.println("<span class=\"product-attr\">qty: " + item.qty + "</span>");
-			out.println("				<input id=\"product-qty\" class=\"mailinglist-input\" type=\"number\" name=\"product-qty\" value=\""+ String.valueOf(item.qty) + "\">\n"); 
+			out.println("<span class=\"product-attr\">qty: <input id=\"product-qty\" class=\"mailinglist-input\" type=\"number\" name=\"product-qty\" value=\""+ String.valueOf(item.qty) + "\"></span>\n"); 
 			out.println("				<button onclick=\"updateItems(" + item.product.getId() + ")\">Update Item Quantity </button>\n");
 			out.println("<button class=\"btn\" onclick=\"removeItems('" + item.product.getId() + "')\">Remove Product</button>");
 			out.println("</div></div></div>");
