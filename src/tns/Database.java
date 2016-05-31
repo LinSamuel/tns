@@ -185,4 +185,17 @@ public class Database {
 
 		return id;
 	}
+	
+	public static void close()
+	{
+		try{
+			if(connection != null) {
+				connection.close();
+				System.out.println("hit");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		connection = null;
+	}
 }
