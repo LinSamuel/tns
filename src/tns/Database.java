@@ -45,7 +45,7 @@ public class Database {
 		return connection;
 	}
 	public static ResultSet queryHandler(Map<String, String> map) throws SQLException {
-		ResultSet returnMe = null;	
+		ResultSet returnMe = null;
 		try {
 		
 		PreparedStatement pstatement = null;
@@ -56,7 +56,7 @@ public class Database {
 		
 		sql += Utils.prepareWhere(map);
 		sql += ";";
-		pstatement = connection.prepareStatement(sql);
+		pstatement = getConnection().prepareStatement(sql);
 		int i = 1;
 		
 		for (String value: map.values()) {
