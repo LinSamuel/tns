@@ -32,6 +32,18 @@ public class Database {
 		
 		return connection;
 	}
+	public static Connection getConnection() {
+		if (Database.connection == null) {
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				connection = DriverManager.getConnection("jdbc:mysql://" + Config.address + "/" + Config.dbname, Config.userName, Config.passWord);
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		
+		return connection;
+	}
 	public static ResultSet queryHandler(Map<String, String> map) throws SQLException {
 		ResultSet returnMe = null;	
 		try {
@@ -79,7 +91,7 @@ public class Database {
 	}
 
 	public int getId() {
-		return id;
+		return this.id;
 	}
 	
 	/**
@@ -96,7 +108,7 @@ public class Database {
 	public int save() {
 		try {
 			String sqlStatement = Utils.prepareInsert(attributes, table);
-			PreparedStatement prepared = connection.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement prepared = getConnection().prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS);
 			
 			int i = 1;
 			for (String value : attributes.values()) {
@@ -105,16 +117,27 @@ public class Database {
 			}
 			
 			int id = prepared.executeUpdate();
-		
+			
 			if (id <= 0) {
 				throw new SQLException("Nope id's didnt return anything");
 			}
+			
+			ResultSet rs = prepared.getGeneratedKeys();
+			if (rs.next()){
+				id = rs.getInt(1);
+			} else {
+				id = 4444;
+			}
+	        setId(id);
+	        rs.close();
+
+	        prepared.close();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			return 0;
 		}
 		
-		return setId(id);
+		return id;
 	}
 	
 	public boolean exists() {
@@ -159,6 +182,7 @@ public class Database {
 	 */
 	public int setId(int id) {
 		this.id = id;
+
 		return id;
 	}
 }

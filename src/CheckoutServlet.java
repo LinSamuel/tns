@@ -28,7 +28,15 @@ public class CheckoutServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// show order page
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		HttpSession session = request.getSession();
+		if (session.getAttribute("cart") == null) {
+			session.setAttribute("cart", new Cart());
+		}
+		
+		Cart cart = (Cart)session.getAttribute("cart");
+		
+		Template.CheckoutForm(response.getWriter(), cart);
 	}
 
 	/**

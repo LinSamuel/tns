@@ -405,9 +405,7 @@ li.navItem a:hover {
 }
 
 .cart-img-container img {
-	position: absolute;
-	transform: translate(0, -50%);
-	top: 50%;
+	width: 100%;
 }
 
 .product-attr {

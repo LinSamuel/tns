@@ -42,14 +42,6 @@ public class CartServlet extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		
-		out.println("	<head>\n" + 
-				"		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n" + 
-				"		<title>Individual Product Page</title>\n" + 
-				"		<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">\n" + 
-				"		<script src=\"js/imageswap.js\"></script>\n" + 
-				"		<script src=\"js/polling.js\"></script>\n" + 
-				"		<script src=\"js/addToCart.js\"></script>\n" +
-				"	</head>");
 		Template.printHeader(out);
 		CartView(cart,out);
 		
@@ -95,7 +87,7 @@ public class CartServlet extends HttpServlet {
 		out.println("</div>");
 		out.println("<div class=\"row\">");
 		// todo fix index.php
-		out.println("<button class=\"big-btn\" id=\"checkout-button\" onclick=\"window.location.href='/index.php/checkout'\" >Checkout</button>");
+		out.println("<button class=\"big-btn\" id=\"checkout-button\" onclick=\"window.location.href='/tns/CheckoutServlet'\" >Checkout</button>");
 		out.println("</div>");
 		
 	}
