@@ -45,7 +45,6 @@ public class Database {
 		
 		//System.out.println(sql);
 		returnMe = pstatement.executeQuery();		
-
 			
 		} catch(Exception e) {
 			e.printStackTrace();
