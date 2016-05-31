@@ -112,17 +112,33 @@ public class Cart {
 		return totalQty == 0;
 	}
 	
+	public void setSubtotal(float subtotal) {
+		this.subtotal = subtotal;
+	}
+	
 	public String getSubtotal() {
 		return parseDecimal(subtotal);
+	}
+	
+	public void setTotal(Double total) {
+		this.total = total;
 	}
 	
 	public String getTotal() {
 		return parseDecimal(total);
 	}
 	
+	public void setTax(double tax) {
+		this.tax = tax;
+	}
+
 	public String getTax() {
 		return parseDecimal(tax);
 	}
+
+//	public void setTaxRate(double taxRate) {
+//		this.taxRate = taxRate;
+//	}
 
 	public String getTaxRate() {
 		return parseDecimal(taxRate);

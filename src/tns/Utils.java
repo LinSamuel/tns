@@ -100,7 +100,7 @@ public class Utils {
 	 *   // Map map = {"a":"apple", "b":"banana", "c":"carrot"}
 	 *   // String table = "abc"
 	 *   Utils.prepareStatement(map, table)
-	 *   // "INSERT INTO `abc` SET (`a`,`b`,`c`) VALUES (?,?,?)"
+	 *   // "INSERT INTO `abc` (`a`,`b`,`c`) VALUES (?,?,?)"
 	 *   
 	 * @param attributes {Map}
 	 * @param table {String}
@@ -116,7 +116,7 @@ public class Utils {
 		// builds (?, ?, ?, ... ?)
 		String value  = Utils.prepareQuestionmarks(attributes.size());
 
-		String sql = "INSERT INTO `" + table + "` SET ";
+		String sql = "INSERT INTO `" + table + "` ";
 		sql += column + " VALUES " + value;
 		
 		return sql;

@@ -1,5 +1,6 @@
 package tns;
 import java.sql.*;
+import java.util.LinkedHashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,12 +11,15 @@ public class Customer extends Database {
 	 * and initializes it to empty string
 	 */
 	public Customer() {
+		attributes = new LinkedHashMap<String, String>();
 		attributes.put("first_name", "");
 		attributes.put("last_name", "");
 		attributes.put("address", "");
 		attributes.put("city", "");
 		attributes.put("state", "");
 		attributes.put("zip", "");
+		
+		table = "customers";
 	}
 	
 	/**
