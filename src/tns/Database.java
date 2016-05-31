@@ -128,10 +128,10 @@ public class Database {
 			} else {
 				id = 4444;
 			}
-	        setId(id);
-	        rs.close();
+			setId(id);
+			rs.close();
 
-	        prepared.close();
+			prepared.close();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			return 0;
