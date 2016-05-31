@@ -81,9 +81,9 @@ public class CartServlet extends HttpServlet {
 		}
 		
 		out.println("<div class=\"row\">");
-		out.println("<p>Tax: $" + cart.getTax() + "</p>");
-		out.println("<p id=\"subtotal\" >Subtotal: $"  + cart.getSubtotal() + " </p>");
-		out.println("<p>Total: $ " + cart.getTotal() + "</p>");
+		out.println("<p>Tax: $<span id='cart-tax'>" + cart.getTax() + "</span></p>");
+		out.println("<p>Subtotal: $ <span id='cart-subtotal'>"  + cart.getSubtotal() + "</span></p>");
+		out.println("<p>Total: $ <span id='cart-total'>" + cart.getTotal() + "</span></p>");
 		out.println("</div>");
 		out.println("<div class=\"row\">");
 		// todo fix index.php

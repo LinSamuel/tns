@@ -16,6 +16,7 @@ public class Template {
 "	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200' rel='stylesheet' type='text/css'>\n" +
 "	<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">\n" +
 "	<script src=\"/tns/js/formvalidation.js\"></script>" +
+"	<script src=\"/tns/js/addToCart.js\"></script>" +
 "</head>\n" +
 "	<header>\n" +
 "		<div class=\"header\">\n" +
