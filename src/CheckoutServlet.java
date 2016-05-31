@@ -56,7 +56,9 @@ public class CheckoutServlet extends HttpServlet {
 		Customer customer = Customer.factory(request);
 		
 		// place order
-		Orders.place(customer, cart);
+		int orderId = Orders.place(customer, cart);
+		
+		response.sendRedirect("/tns/checkout.jsp?orderId=" + Integer.toString(orderId));
 		
 		// donzo
 	}

@@ -15,7 +15,7 @@ public class Orders extends Database {
 		table = "orders";
 	}
 	
-	public static void place(Customer customer, Cart cart) {
+	public static int place(Customer customer, Cart cart) {
 		
 		// save customer
 		customer.save();
@@ -39,6 +39,8 @@ public class Orders extends Database {
 			po.set("qty", Integer.toString( item.qty ));
 			po.save();
 		}
+		
+		return order.getId();
 	}
 
 	public static Cart find(String id) {
