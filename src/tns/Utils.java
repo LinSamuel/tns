@@ -138,7 +138,7 @@ public class Utils {
 		ArrayList<String> keys = new ArrayList<String>(map.keySet());
 		
 		for (String key : keys) {
-			list.add("`" + key + "` = ? ");
+			list.add("" + key + " = ? ");
 		}
 		
 		return Utils.implode("AND", list);
