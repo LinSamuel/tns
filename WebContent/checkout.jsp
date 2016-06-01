@@ -66,8 +66,7 @@
 		</div>
 	</div>
 </div>
-<% };
-	tns.Database.close();%>
+<% } %>
 <h1>Thanks for Shopping!</h1>
 </div>
 

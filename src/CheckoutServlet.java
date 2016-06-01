@@ -37,7 +37,6 @@ public class CheckoutServlet extends HttpServlet {
 		Cart cart = (Cart)session.getAttribute("cart");
 		
 		Template.CheckoutForm(response.getWriter(), cart);
-		Database.close();
 	}
 
 	/**
@@ -62,7 +61,6 @@ public class CheckoutServlet extends HttpServlet {
 		response.sendRedirect("/tns/checkout.jsp?orderId=" + Integer.toString(orderId));
 		
 		// donzo
-		Database.close();
 	}
 
 }
