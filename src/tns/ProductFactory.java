@@ -87,6 +87,8 @@ public class ProductFactory {
 		} catch(Exception e){
 			System.out.println("something went wrong");
 		}
+		
+		Database.close();
 		return finalProducts;
 	   }
 	
